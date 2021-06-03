@@ -16,6 +16,7 @@ defmodule FirstBlogWeb.Router do
   scope "/", FirstBlogWeb do
     pipe_through :browser
 
+    get "/blog", BlogController, :blog
     get "/about", AboutController, :about_me
     get "/", PageController, :index
   end
