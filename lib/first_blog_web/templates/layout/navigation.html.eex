@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,14 @@
     <title>Navbar</title>
 </head>
 <body>
+<section class="container">
 <h1>This will be a navbar</h1>
+<nav role="navigation">
+          <ul>
+            <li><%= link "Blog", to: "/blog"%></li>
+            <li><%= link "About me", to: "/about"%></li>
+          </ul>
+        </nav>
+</section>
 </body>
 </html>
