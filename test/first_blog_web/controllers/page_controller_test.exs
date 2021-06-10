@@ -6,6 +6,11 @@ defmodule FirstBlogWeb.PageControllerTest do
     assert html_response(conn, 200) =~ "Welcome to The Bro-Grammer!"
   end
 
+  test "home", %{conn: conn} do
+    conn = get(conn, "/home")
+    assert html_response(conn, 200) =~ "Welcome to The Bro-Grammer!"
+  end
+
   test "about", %{conn: conn} do
     conn = get(conn, "/about")
     assert html_response(conn, 200) =~ "All About ME!"

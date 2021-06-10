@@ -19,6 +19,7 @@ defmodule FirstBlogWeb.Router do
     get "/blog", PageController, :blog
     get "/about", PageController, :about_me
     get "/", PageController, :index
+    get "/home", PageController, :index
   end
 
   # Other scopes may use custom stacks.
