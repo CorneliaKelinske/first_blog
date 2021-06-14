@@ -11,12 +11,17 @@
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
+  <section>
    <%= render "navigation.html", conn: @conn %>
+   </section>
 
     <main role="main" class="section">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <section class="hero-body is-full-height has-background-black" >
       <%= @inner_content %>
+      </section>
     </main>
+   
   </body>
 </html>

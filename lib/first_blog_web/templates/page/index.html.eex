@@ -1,4 +1,4 @@
-<section class="box">
+<section class="hero is-primary align-left">
   <h1><%= gettext "Welcome to %{name}!", name: "The Bro-Grammer" %></h1>
   <p>I like coding. But I also like lifting things up and putting them down! </p>
 </section>
