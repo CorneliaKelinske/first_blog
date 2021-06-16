@@ -25,11 +25,11 @@
     <div class="navbar-start">
 
       <a class="navbar-item">
-        <%= link "Home", to: "/home"%>
+        <%= link "Home", to: "/home", class: "special-link"%>
       </a>
 
        <a class="navbar-item">
-        <%= link "Blog", to: "/blog"%>
+        <%= link "Blog", to: "/blog", class: "special-link"%>
       </a>
 
       <a class="navbar-item">
