@@ -33,8 +33,11 @@
       </a>
 
       <a class="navbar-item">
-        <%= link "About me", to: "/about"%>
+        <%= link "About me", to: "/about", class: "special-link"%>
       </a>
+
+
+
 
     </div>
   </div>
