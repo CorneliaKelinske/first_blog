@@ -8,14 +8,39 @@
     <title>Navbar</title>
 </head>
 <body>
-<section class="container">
-<h1>This will be a navbar</h1>
-<nav role="navigation">
-          <ul>
-            <li><%= link "Blog", to: "/blog"%></li>
-            <li><%= link "About me", to: "/about"%></li>
-          </ul>
-        </nav>
-</section>
-</body>
+<nav class="navbar is-light is-spaced" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item">
+      <h1 class="title is-3">THE BROGRAMMER</h1>
+    </a>
+
+   <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+
+      <a class="navbar-item">
+        <%= link "Home", to: "/home", class: "special-link"%>
+      </a>
+
+       <a class="navbar-item">
+        <%= link "Blog", to: "/blog", class: "special-link"%>
+      </a>
+
+      <a class="navbar-item">
+        <%= link "About me", to: "/about", class: "special-link"%>
+      </a>
+
+
+
+
+    </div>
+  </div>
+
+</nav>
 </html>
