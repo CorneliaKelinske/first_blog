@@ -1,0 +1,15 @@
+<div class="borderleft">
+  <div class="row">
+    <div class="col-md-8">
+      <h2><%= link @post.title, to: Routes.post_path(@conn, :show, @post) %></h2>
+    </div>
+    <div class="col-md-4 text-right text-muted">
+      <%= @post.date %>
+    </div>
+  </div>
+  <p class="text-black mb-5">
+    <%= @post.description %> &nbsp;
+  <%= link "more", to: Routes.post_path(@conn, :show, @post) %> <br>
+  <%= render "_small_tags.html", tags: @post.tags, conn: @conn %>
+  </p>
+</div>
