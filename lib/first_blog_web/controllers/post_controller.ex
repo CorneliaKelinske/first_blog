@@ -12,7 +12,7 @@ defmodule FirstBlogWeb.PostController do
       page_title: "Blog"
     ]
 
-    render(conn, "index.html", assigns)
+    render(conn, "_post.html", assigns)
   end
 
   def index(conn, _params) do
@@ -23,7 +23,7 @@ defmodule FirstBlogWeb.PostController do
       page_title: "Blog"
     ]
 
-    render(conn, "index.html", assigns)
+    render(conn, "_post.html", assigns)
   end
 
   @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
