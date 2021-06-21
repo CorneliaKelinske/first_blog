@@ -3,7 +3,14 @@
 <ul>
   <%= for post <- @posts do %>
     <li>
-    <%= post.title %>
+    <article class="message is-dark">
+    <div class="message-header">
+        <p><%= post.title %></p>
+    </div>
+    <p><%= post.date %></p>
+    <p><%= post.description%></p>
     </li>
+    </article>
+
   <% end %>
 </ul>
