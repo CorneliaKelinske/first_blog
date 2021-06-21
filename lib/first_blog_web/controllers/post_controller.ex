@@ -25,14 +25,14 @@ defmodule FirstBlogWeb.PostController do
     render(conn, "index.html", assigns)
   end
 
-  # @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
-  # def show(conn, %{"id" => id}) do
-  #   case Blog.fetch_post(id) do
-  #     {:ok, post} ->
-  #       render(conn, "show.html", post: post, page_title: post.title)
+  @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
+  def show(conn, %{"id" => id}) do
+    case Blog.fetch_post(id) do
+      {:ok, post} ->
+        render(conn, "show.html", post: post, page_title: post.title)
 
-  #     _ ->
-  #       render(conn, ErrorView, "404.html")
-  #   end
-  # end
+      _ ->
+        render(conn, ErrorView, "404.html")
+    end
+  end
 end
