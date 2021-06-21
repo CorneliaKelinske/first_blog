@@ -10,17 +10,17 @@
 # end
 defmodule FirstBlogWeb.PostController do
   use FirstBlogWeb, :controller
-  # alias FirstBlog.Blog
+  alias FirstBlog.Blog
   # alias FirstBlogWeb.ErrorView
 
   @spec index(Plug.Conn.t(), map) :: Plug.Conn.t()
   def index(conn, _params) do
     assigns = [
-      # page: 1,
-      # posts: Blog.list_posts(1),
-      # tags: Blog.tags_with_count(),
+      page: 1,
+      posts: Blog.list_posts(1),
+      tags: Blog.tags_with_count(),
       page_title: "Blog"
-    ]
+    ] |> IO.inspect(label: "23", limit: :infinity, charlists: false)
 
     render(conn, "index.html", assigns)
   end
