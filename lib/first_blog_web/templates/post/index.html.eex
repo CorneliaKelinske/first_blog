@@ -3,9 +3,11 @@
 <ul>
   <%= for post <- @posts do %>
     <li>
-    <article class="message is-dark">
+    <article class="message">
     <div class="message-header">
+     <div class="specail-header"
         <p><%= post.title %></p>
+    </div>
     </div>
     <p><%= post.date %></p>
     <p><%= post.description%></p>
