@@ -5,8 +5,7 @@
     <li>
     <article class="message">
     <div class="message-header">
-        <p><%= link post.title, to: Routes.post_path(@conn, :show, post) %></p>
-
+        <p class="blog-link"><%= link post.title, to: Routes.post_path(@conn, :show, post)%></p>
     </div>
     <div class="blog-date">
         <p><%= post.date %></p>

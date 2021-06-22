@@ -2,6 +2,13 @@
     color: hsl(261, 31%,36%);
   }
 
+.blog-link {
+  color: whitesmoke;
+  text-decoration: none;
+  
+  
+}
+
 .blog-date {
   color: hsl(148, 71%, 23%);
 }
@@ -10,4 +17,8 @@ $message-header-background-color: hsl(261, 31%,36%);
 
 .blog-body>p {
   color: red;
+}
+
+.blog-body>h1 {
+  color: hsl(148, 71%, 23%);
 }
