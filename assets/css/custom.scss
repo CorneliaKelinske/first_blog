@@ -4,7 +4,7 @@
 
 .blog-link {
   color: whitesmoke;
-  text-decoration: none;
+  text-decoration: none !important;
   
   
 }
@@ -13,12 +13,16 @@
   color: hsl(148, 71%, 23%);
 }
 
-$message-header-background-color: hsl(261, 31%,36%);
-
-.blog-body>p {
-  color: red;
+.blog-author {
+  color: hsl(261, 31%,36%);
 }
 
+$message-header-background-color: hsl(261, 31%,36%);
+
+
+
 .blog-body>h1 {
-  color: hsl(148, 71%, 23%);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.125;  
 }
