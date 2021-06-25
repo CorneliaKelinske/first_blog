@@ -1,3 +1,17 @@
-<h1>All About ME!</h1>
+<h1 class=title><%= @page_title %></h1>
+
+    <div class="message">
+    <div class="message-header">
+        <p>Who is this bro-gramming person anyway?</p>
 
 
+
+    </div>
+
+    <div class="message-body">
+
+       <p>My name is Cornelia Kelinske.</p>
+
+
+
+    </div>

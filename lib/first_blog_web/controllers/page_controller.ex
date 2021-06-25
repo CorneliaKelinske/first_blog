@@ -9,6 +9,9 @@ defmodule FirstBlogWeb.PageController do
   end
 
   def about_me(conn, _params) do
-    render(conn, "about_me.html")
+    assigns = [
+      page_title: "About me"
+    ]
+    render(conn, "about_me.html", assigns)
   end
 end
