@@ -1,4 +1,23 @@
-<section class="hero is-primary align-left">
-  <h1><%= gettext "Welcome to %{name}!", name: "The Bro-Grammer" %></h1>
-  <p>I like coding. But I also like lifting things up and putting them down! </p>
-</section>
+<h1 class=title><%= @page_title %></h1>
+
+    <div class="message">
+    <div class="message-header">
+        <p>...to the Brogrammer Website.</p>
+
+
+    </div>
+
+    <div class="message-body">
+        <p>This is where I will be sharing my journey towards becoming a professional Elixir Developer.</p>
+        <p>My name is Cornelia Kelinske. Up until a few months ago, I was working as a freelance translator for the language combination
+      German into English and vice versa. However, in light of the fundamental changes in the translation world brought about by the emergence
+      and rapid improvment of various machine translation applications, I have decided to jump ship. Instead of cruising through the waters of the international
+      translation industry, I will set out for the deep sea of backend web development.</p>
+      <p>My goal is to not only write about the technical and professional aspects of this career change, but also about the practical side and the emotions going along with it.
+      What is it like for a woman, wife and mother in her late 30s to start on a completely new career path? I guess we"ll find out.</p>
+      <p>And last but certainly not least: what on earth is a BROGRAMMER? It is not a typo. It is a person who is a programmer, but also a "bro" (as in lifting weights
+      and flexing in front of the mirror occassionally). So, yeah, this site will also have some lifting-related content.</p>
+
+
+    </li>
+    </div>
