@@ -10,7 +10,16 @@
 
     <div class="message-body">
 
-       <p>My name is Cornelia Kelinske.</p>
+       <div class="block">My name is Cornelia Kelinske.</div>
+
+       <div class="block">Instead of listing all the things that I am and obssessing over what to put first, I will use a chronological approach,
+       showing how my interests and passions over time have led me to where I am at now.</div>
+
+       <div class="block">I grew up in a small town close to Nuremberg, Germany. From an early age, I have been fascinated with foreign languages.
+       Throughout middle and high school I learned English, Latin and French.</div>
+
+
+
 
 
 
