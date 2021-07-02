@@ -33,7 +33,8 @@
 
         <div class="block">My most fateful assignment as an interpreter occurred in April 2009 in <b>Ingolstadt</b>, a medium-sized town in Bavaria. I was sent to interpret for
         Canadian soldiers who were sent to Germany for four weeks, in order to learn how to operate the AEV Badger, a German tank that they would be using in Afghanistan. One of
-        the Canadian soldiers was Alan Vardy (<a class=special-lin><%= link "alanvardy.com", to: "http://alanvardy.com", target: "_blank" %></a>) </div>
+        the Canadian soldiers was Alan Vardy (<a><%= link "alanvardy.com", to: "http://alanvardy.com", target: "_blank" %></a>), who is now my
+        husband of more than a decade.</div>
 
 
 
