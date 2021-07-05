@@ -1,0 +1,14 @@
+<h1 class=title><%= @post.title %></h1>
+
+
+    <div class=block>
+    <div class="blog-date"><%= @post.date %></div>
+    <div class="blog-author">Written by <%= @post.author %></div>
+  </div>
+
+
+
+
+<div class="blog-body">
+  <%= raw @post.body %>
+</div>

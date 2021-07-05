@@ -2,3 +2,33 @@
     color: hsl(261, 31%,36%);
   }
 
+.blog-link {
+  color: whitesmoke;
+  text-decoration: none !important;
+  
+  
+}
+
+.blog-date {
+  color: hsl(148, 71%, 23%);
+}
+
+.blog-author {
+  color: hsl(261, 31%,36%);
+}
+
+.message-header {background-color: hsl(261, 31%,36%);}
+
+
+
+
+.blog-body > h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.125;  
+}
+
+html {
+  background-color: hsl(278, 7%, 83%);
+}
+ 

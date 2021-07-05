@@ -2,14 +2,16 @@ defmodule FirstBlogWeb.PageController do
   use FirstBlogWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html")
-  end
-
-  def blog(conn, _oarams) do
-    render(conn, "blog.html")
+    assigns = [
+      page_title: "Welcome"
+    ]
+    render(conn, "index.html", assigns)
   end
 
   def about_me(conn, _params) do
-    render(conn, "about_me.html")
+    assigns = [
+      page_title: "About me"
+    ]
+    render(conn, "about_me.html", assigns)
   end
 end

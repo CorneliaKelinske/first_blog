@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
+ <div class="wrapper">
   <body>
   <section>
    <%= render "navigation.html", conn: @conn %>
@@ -24,4 +26,5 @@
     </main>
 
   </body>
+</div>
 </html>
