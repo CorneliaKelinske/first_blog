@@ -1,9 +1,5 @@
 <h1 class=title><%= @page_title %></h1>
-
-<div class="tile is-ancestor">
-<div class="tile is-12 is-horizontal is parent">
-<div class="tile is-child box">
-    <div class="message">
+<div class="message">
     <div class="message-header">
         <p>Who is this bro-gramming person anyway?</p>
     </div>
@@ -16,8 +12,10 @@
        showing how my interests and passions over time have led me to where I am at now.</div>
     </div>
     </div>
-    </div>
 
+
+<div class="tile is-ancestor">
+<div class="tile is-parent">
     <div class="tile is-child box">
        <div class="block">I grew up in a small town close to <b>Nuremberg</b>, Germany, home to the best Bratwurst. From an early age, I have been fascinated with foreign languages, which is why I opted
        to learn English, Latin and French in Middle and High School. After graduating from High School, I decided to pursue my passion for languages and
@@ -28,14 +26,20 @@
        of my life. Fell in love with Manchester, spent many nights out dancing in Fifth Ave and met one of my best friends.</div>
  </div>
  </div>
- </div>
-       <div class="block">I graduated as a <i>Diplom-Dolmetscher</i> (German equivalent to a M.A. in conference interpreting) for German, English and French in 2008. Immediately after graduating,
+   <div class="tile is-parent">
+    <div class="tile is-child box">
+     <div class="block">I graduated as a <i>Diplom-Dolmetscher</i> (German equivalent to a M.A. in conference interpreting) for German, English and French in 2008. Immediately after graduating,
        I accepted a position as a translator and occasional interpreter with the Federal Office of Languages, the language service of the German military. My workplace was
        in <b>Koblenz</b>, where the rivers Rhine-Moselle Region, that is famous for its castles and wine.
        As part of the job, I had to undergo a very abbreviated basic military training, since translators of the Federal Office of Languages were regularly sent to accompany the
        German troops in areas of operation so as to provide translation services in various camps. During the military training, I became aware of how out of shape I was
        (I might have enjoyed that good wine a little bit too much). I picked up running again and joined a gym for the first time, just doing cardio and machines, though.
         </div>
+    </div>
+
+ </div>
+ </div>
+
 
         <div class="block">My most fateful assignment as an interpreter occurred in April 2009 in <b>Ingolstadt</b>, a medium-sized town in Bavaria. I was sent to interpret for
         Canadian soldiers who were sent to Germany for four weeks, in order to learn how to operate the AEV Badger, a German tank that they would be using in Afghanistan. One of
