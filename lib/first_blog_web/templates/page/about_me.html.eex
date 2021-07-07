@@ -26,6 +26,17 @@
        of my life. Fell in love with Manchester, spent many nights out dancing in Fifth Ave and met one of my best friends.</div>
  </div>
  </div>
+
+ <div class="tile is-parent">
+    <div class="tile is-child box">
+       <figure class="image is-2by5">
+        <img src="<%= Routes.static_path(@conn, "/images/image042.jpg") %>"/>
+      </figure>
+ </div>
+ </div>
+
+ <div class="tile is ancestor">
+
    <div class="tile is-parent">
     <div class="tile is-child box">
      <div class="block">I graduated as a <i>Diplom-Dolmetscher</i> (German equivalent to a M.A. in conference interpreting) for German, English and French in 2008. Immediately after graduating,
@@ -37,6 +48,7 @@
         </div>
     </div>
 
+ </div>
  </div>
  </div>
 
