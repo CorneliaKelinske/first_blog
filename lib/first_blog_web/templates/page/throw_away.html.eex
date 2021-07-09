@@ -1,22 +1,22 @@
 <h1 class=title><%= @page_title %></h1>
- <div class="message">
-  <div class="message-header">
-   <p>Who is this bro-gramming person anyway?</p>
-  </div>
+<div class="message">
+    <div class="message-header">
+        <p>Who is this bro-gramming person anyway?</p>
+    </div>
 
-  <div class="message-body">
-   <div class="block">My name is Cornelia Kelinske.</div>
+    <div class="message-body">
 
-   <div class="block">Instead of listing all the things that I am and obsessing over what to put first, I will use a chronological approach,
-    showing how my interests and passions over time have led me to where I am at now.
-   </div>
-  </div>
- </div>
+       <div class="block">My name is Cornelia Kelinske.</div>
+
+       <div class="block">Instead of listing all the things that I am and obsessing over what to put first, I will use a chronological approach,
+       showing how my interests and passions over time have led me to where I am at now.</div>
+    </div>
+    </div>
 
 
- <div class="tile is-ancestor">
-  <div class="tile is-parent">
-   <div class="tile is-child box">
+<div class="tile is-ancestor">
+<div class="tile is-parent">
+    <div class="tile is-child box">
        <div class="block">I grew up in a small town close to <b>Nuremberg</b>, Germany, home to the best Bratwurst. From an early age, I have been fascinated with foreign languages, which is why I opted
        to learn English, Latin and French in Middle and High School. After graduating from High School, I decided to pursue my passion for languages and
        since I had zero interest in becoming a teacher, I decided to become a conference interpreter instead. Off to university I went, namely to the -- at least in
@@ -24,28 +24,20 @@
        The highlight of my university years was the opportunity to study as an exchange student. First, I spent six months in <b>Dijon</b>, France, the home of Dijon mustard and crème de cassis where
        I devoured my fair share (or maybe more) of <i>croissants</i> and <i>pain au chocolat</i>. My second semester abroad was at the University of Salford, right next to <b>Manchester</b>. I had the time
        of my life. Fell in love with Manchester, spent many nights out dancing in Fifth Ave and met one of my best friends.</div>
-   </div>
-  </div>
+ </div>
+ </div>
 
-  <div class="tile is-parent">
-   <div class="tile is-child box">
-    <figure class="image is-2by5">
-     <img src="<%= Routes.static_path(@conn, "/images/image042.jpg") %>"/>
-    </figure>
-   </div>
-  </div>
+ <div class="tile is-parent">
+    <div class="tile is-child box">
+       <figure class="image is-2by5">
+        <img src="<%= Routes.static_path(@conn, "/images/image042.jpg") %>"/>
+      </figure>
+ </div>
  </div>
 
  <div class="tile is ancestor">
-  <div class="tile is-parent">
-   <div class="tile is-child box">
-    <figure class="image is-2by5">
-     <img src="<%= Routes.static_path(@conn, "/images/image042.jpg") %>"/>
-    </figure>
-   </div>
-  </div>
 
-  <div class="tile is-parent">
+   <div class="tile is-parent">
     <div class="tile is-child box">
      <div class="block">I graduated as a <i>Diplom-Dolmetscher</i> (German equivalent to a M.A. in conference interpreting) for German, English and French in 2008. Immediately after graduating,
        I accepted a position as a translator and occasional interpreter with the Federal Office of Languages, the language service of the German military. My workplace was
