@@ -4,7 +4,7 @@
    <p>Who is this bro-gramming person anyway?</p>
   </div>
 
-  <div class="message-body">
+  <div class="message-body" id="about-me-message">
    <div class="block">My name is Cornelia Kelinske.</div>
 
    <div class="block">Instead of listing all the things that I am and obsessing over what to put first, I will use a chronological approach,
@@ -28,10 +28,11 @@
   </div>
 
   <div class="tile is-parent">
-   <div class="tile is-child box">
+   <div class="tile is-child box" id="about-me-tile2">
     <figure class="image is-2by5">
      <img src="<%= Routes.static_path(@conn, "/images/image042.jpg") %>"/>
     </figure>
+
    </div>
   </div>
 
@@ -55,7 +56,7 @@
 
   <div class="tile">
    <div class="tile is-parent">
-   <div class="tile is-child box">
+   <div class="tile is-child box" id="about-me-tile2">
     <div class="block"> One of the Canadian soldiers was Alan Vardy (<a><%= link "alanvardy.com", to: "http://alanvardy.com", target: "_blank" %></a>), who is now my
         husband of more than a decade. He is also the one who introduced me to my other big love: the barbell and all things lifting. Lifting kept me somewhat sane during the
         two years of long-distance relationship that followed. The longest time that we spent in the same country in those two years were the few months that our respective
@@ -89,7 +90,7 @@
    <div class="tile is-parent is-vertical">
 
     <div class="tile is-parent">
-    <div class="is-child box">
+    <div class="is-child box" id="about-me-tile">
     <figure class="image is-2by5">
      <img src="<%= Routes.static_path(@conn, "/images/Lifting.jpg") %>"/>
     </figure>
@@ -98,7 +99,7 @@
 
 
     <div class="tile is-parent">
-     <div class="is-child box">And this is where I am at right now, living the dream. I enjoy hiking, swimming in the lake and in the ocean.Going for
+     <div class="is-child box" id="about-me-tile2">And this is where I am at right now, living the dream. I enjoy hiking, swimming in the lake and in the ocean.Going for
          bike rides with my family. I love having a nice glass of red wine while reading a good book in the hammock on my deck.
          I also like having a big cup of coffee in the morning while I am journaling also in my hammock. And last but not least: I love lifting in
          my garage and being a "bro". As for the second part of the word "BRO-GRAMMER": during the last two years, I have noticed a huge shift away from traditional translation
