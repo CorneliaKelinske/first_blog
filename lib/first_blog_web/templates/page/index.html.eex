@@ -1,8 +1,9 @@
+
 <h1 class=title><%= @page_title %></h1>
 
     <div class="message">
     <div class="message-header">
-        <p>...to the home of the unlikely agglomeration of all things coding, lifting and moming.</p>
+        <p>...to the home of the unlikely agglomeration of all things coding, lifting and muming.</p>
 
 
 
