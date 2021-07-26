@@ -20,7 +20,7 @@ defmodule FirstBlogWeb.PostController do
       posts: Blog.list_posts(1),
       tags: Blog.tags_with_count(),
       page_title: "Blog"
-    ] 
+    ]
 
     render(conn, "index.html", assigns)
   end
@@ -35,4 +35,6 @@ defmodule FirstBlogWeb.PostController do
         render(conn, ErrorView, "404.html")
     end
   end
+
+
 end
