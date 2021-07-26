@@ -12,6 +12,7 @@
     </div>
     <div class="message-body">
         <p><%= post.description%></p>
+        <p><%= render "_small_tags.html", tags: @tags, conn: @conn %></p>
     </div>
     </li>
     </article>
