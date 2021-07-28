@@ -7,6 +7,13 @@ defmodule FirstBlog.MixProject do
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -45,7 +52,8 @@ defmodule FirstBlog.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:postex, "~> 0.1.6"}
+      {:postex, "~> 0.1.6"},
+      {:excoveralls, "~> 0.13", only: :test, runtime: false},
     ]
   end
 
