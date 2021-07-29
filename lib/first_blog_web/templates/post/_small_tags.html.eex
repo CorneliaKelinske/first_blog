@@ -1,3 +1,0 @@
-<%= for tag <- @tags do %>
-  &nbsp;<%= link tag, to: Routes.tag_path(@conn, :show, tag) %>
-<% end %>
