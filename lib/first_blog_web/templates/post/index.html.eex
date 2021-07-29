@@ -14,7 +14,7 @@
         <p><%= post.description%></p>
         <p>
           <%= for tag <- post.tags do %>
-            <%= tag %>
+          <span class="tag is-dark"><%= tag %></span>
           <% end %>
         </p>
 
