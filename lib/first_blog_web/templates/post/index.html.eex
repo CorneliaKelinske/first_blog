@@ -12,6 +12,14 @@
     </div>
     <div class="message-body">
         <p><%= post.description%></p>
+        <p>
+          <%= for tag <- post.tags do %>
+          <span class="tag is-dark"><%= tag %></span>
+          <% end %>
+        </p>
+
+
+
     </div>
     </li>
     </article>
