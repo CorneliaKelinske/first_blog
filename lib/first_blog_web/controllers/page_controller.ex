@@ -5,6 +5,7 @@ defmodule FirstBlogWeb.PageController do
     assigns = [
       page_title: "Welcome"
     ]
+
     render(conn, "index.html", assigns)
   end
 
@@ -12,6 +13,7 @@ defmodule FirstBlogWeb.PageController do
     assigns = [
       page_title: "About me"
     ]
+
     render(conn, "about_me.html", assigns)
   end
 end

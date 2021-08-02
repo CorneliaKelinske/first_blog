@@ -5,8 +5,6 @@
 #     render(conn, "index.html")
 #   end
 
-
-
 # end
 defmodule FirstBlogWeb.PostController do
   use FirstBlogWeb, :controller
@@ -20,7 +18,7 @@ defmodule FirstBlogWeb.PostController do
       posts: Blog.list_posts(1),
       tags: Blog.tags_with_count(),
       page_title: "Blog"
-    ] 
+    ]
 
     render(conn, "index.html", assigns)
   end
