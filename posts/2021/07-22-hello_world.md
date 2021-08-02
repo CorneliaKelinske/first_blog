@@ -20,6 +20,8 @@ My coding journey began with....
 ... printed in Python way back in 2018. My husband, who at that time worked as an HVAC mechanic, had just discovered coding for himself and
 challenged me to try it as well. What can I say? I am very competitive and said at some point jokingly that one day I would be better at it than him.
 
+What the heckenbob?!
+
 
 
 
