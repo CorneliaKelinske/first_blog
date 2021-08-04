@@ -1,6 +1,6 @@
 defmodule FirstBlogWeb.TagController do
   use FirstBlogWeb, :controller
-  alias FirstBlog.Blog
+  # alias FirstBlog.Blog
 
   # @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
   # def show(conn, %{"id" => tag}) do
