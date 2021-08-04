@@ -33,6 +33,4 @@ defmodule FirstBlogWeb.PostController do
         render(conn, ErrorView, "404.html")
     end
   end
-
-
 end

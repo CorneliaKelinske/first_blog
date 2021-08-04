@@ -3,21 +3,21 @@ defmodule FirstBlogWeb.PageControllerTest do
 
   test "index", %{conn: conn} do
     conn = get(conn, "/")
-    assert html_response(conn, 200) =~ "Welcome to The Bro-Grammer!"
+    assert html_response(conn, 200) =~ "Welcome"
   end
 
   test "home", %{conn: conn} do
     conn = get(conn, "/home")
-    assert html_response(conn, 200) =~ "Welcome to The Bro-Grammer!"
+    assert html_response(conn, 200) =~ "Welcome"
   end
 
   test "about", %{conn: conn} do
     conn = get(conn, "/about")
-    assert html_response(conn, 200) =~ "All About ME!"
+    assert html_response(conn, 200) =~ "Who is this bro-gramming person anyway?"
   end
 
   test "blog", %{conn: conn} do
     conn = get(conn, "/blog")
-    assert html_response(conn, 200) =~ "And this is the home of all the blog posts"
+    assert html_response(conn, 200) =~ "Blog"
   end
 end
