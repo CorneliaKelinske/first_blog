@@ -54,7 +54,8 @@ defmodule FirstBlog.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:postex, "~> 0.1.6"},
       {:excoveralls, "~> 0.13", only: :test, runtime: false},
-      {:ex_check, "~> 0.14.0", only: [:dev], runtime: false}
+      {:ex_check, "~> 0.14.0", only: [:dev], runtime: false},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end
 
