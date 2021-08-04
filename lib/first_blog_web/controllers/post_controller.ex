@@ -15,7 +15,7 @@ defmodule FirstBlogWeb.PostController do
   def index(conn, _params) do
     assigns = [
       page: 1,
-      posts: Blog.list_posts(1),
+      posts: Blog.list_posts(),
       tags: Blog.tags_with_count(),
       page_title: "Blog"
     ]
