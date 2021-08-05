@@ -25,6 +25,8 @@ defmodule FirstBlogWeb.PostController do
 
   @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
   def show(conn, %{"id" => id}) do
+
+
     case Blog.fetch_post(id) do
       {:ok, post} ->
         render(conn, "show.html", post: post, page_title: post.title)
