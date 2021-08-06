@@ -1,10 +1,15 @@
 <h1><%= @page_title %></h1>
 
-<div class="container bg-white p-4 rounded">
+<ul>
   <%= for post <- @posts do %>
-    <%= render FirstBlogWeb.PostView, "_post.html", post: post, conn: @conn %>
+    <li>
+        <p><%= link post.title, to: Routes.post_path(@conn, :show, post), class: "blog-link"%></p>
+
+    </li>
+
   <% end %>
-  <div class="mt-5">
+</ul>
+
+ <div>
     <%= link "Back to Blog", to: Routes.post_path(@conn, :index) %>
   </div>
-</div>
