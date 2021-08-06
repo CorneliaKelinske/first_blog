@@ -9,3 +9,7 @@
 
   <% end %>
 </ul>
+
+ <div>
+    <%= link "Back to Blog", to: Routes.post_path(@conn, :index) %>
+  </div>
