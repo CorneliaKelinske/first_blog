@@ -15,7 +15,7 @@
   <%= link "more", to: Routes.post_path(@conn, :show, post.id) %> <br></p>
         <p>
           <%= for tag <- post.tags do %>
-          <span class="tag is-dark"> &nbsp;<%= link tag, to: Routes.tag_path(@conn, :show, tag) %></span>
+          <span class="tag is-dark" id="tag-link"> &nbsp;<%= link tag, to: Routes.tag_path(@conn, :show, tag) %></span>
           <% end %>
         </p>
 
