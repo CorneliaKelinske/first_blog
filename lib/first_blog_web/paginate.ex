@@ -34,17 +34,17 @@ defmodule FirstBlogWeb.Paginate do
 
   @spec paginate_button(Plug.Conn.t(), String.t() | integer, integer, integer) :: {:safe, iolist}
   defp paginate_button(_conn, "Next", page, pages) when page == pages do
-    contag("Next", :a, class: "pagination", tabindex: "-1")
+    contag("Next", :a, class: "pagination-link is-left", tabindex: "-1")
     |> contag(:li, class: "pagination")
   end
 
   defp paginate_button(_conn, "Previous", 1, _pages) do
-    contag("Previous", :a, class: "pagination", tabindex: "-1")
+    contag("Previous", :a, class: "pagination-link is-left", tabindex: "-1")
     |> contag(:li, class: "pagination")
   end
 
   defp paginate_button(_conn, "....", _page, _pages) do
-    contag("....", :a, class: "pagination", tabindex: "-1")
+    contag("....", :a, class: "pagination-link is-left", tabindex: "-1")
     |> contag(:li, class: "pagination")
   end
 
@@ -59,13 +59,13 @@ defmodule FirstBlogWeb.Paginate do
   defp paginate_button(conn, "Previous", page, _pages) do
     link("Previous",
       to: Routes.post_path(conn, :index, page - 1),
-      class: "page-link text-center mt-1"
+      class: "pagination"
     )
     |> contag(:li, [])
   end
 
   defp paginate_button(_conn, same, same, _pages) do
-    contag(same, :a, class: "pagination")
+    contag(same, :a, class: "pagination-link")
     |> contag(:li, class: "pagination")
   end
 
