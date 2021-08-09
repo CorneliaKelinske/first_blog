@@ -17,7 +17,7 @@ defmodule FirstBlogWeb.Paginate do
     ([paginate_button(conn, "Previous", page, pages)] ++
        numbered_buttons(conn, page, pages) ++
        [paginate_button(conn, "Next", page, pages)])
-    |> contag(:ul, class: "pagination is-left")
+    |> contag(:ul, class: "pagination")
   end
 
   # Handle the case where there is only a single page, just gives us some disabled buttons
@@ -40,12 +40,12 @@ defmodule FirstBlogWeb.Paginate do
 
   defp paginate_button(_conn, "Previous", 1, _pages) do
     contag("Previous", :a, class: "pagination is-left", tabindex: "-1")
-    |> contag(:li, class: "pagination-link")
+    |> contag(:li, class: "pagination")
   end
 
   defp paginate_button(_conn, "....", _page, _pages) do
-    contag("....", :a, class: "pagination is-left", tabindex: "-1")
-    |> contag(:li, class: "pagination-link")
+    contag("....", :a, class: "pagination-link is-left", tabindex: "-1")
+    |> contag(:li, class: "pagination")
   end
 
   defp paginate_button(conn, "Next", page, _pages) do
