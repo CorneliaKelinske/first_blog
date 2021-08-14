@@ -60,3 +60,20 @@ h1 {margin-top: 20px;
 span a {
   text-decoration: none !important;
 }
+article .message-body {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+span a {
+  text-decoration: none !important;
+}
+
+.pagination-link.is-current {background-color: hsl(268, 2%, 41%);
+}
+
+.pagination-link {background-color: hsl(0, 0%, 96%)}
+
+.pagination-next {background-color: hsl(0, 0%, 96%)}
+
+.pagination-previous {background-color: hsl(0, 0%, 96%);}
