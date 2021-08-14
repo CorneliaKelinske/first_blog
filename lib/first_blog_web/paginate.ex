@@ -14,10 +14,12 @@ defmodule FirstBlogWeb.Paginate do
   def build(conn, page) do
     pages = Blog.pages()
 
-    ([paginate_button(conn, "Previous", page, pages)] ++
-       numbered_buttons(conn, page, pages) ++
-       [paginate_button(conn, "Next", page, pages)])
-    |> contag(:ul, class: "pagination")
+    next_last = [paginate_button(conn, "Previous", page, pages), paginate_button(conn, "Next", page, pages)]
+
+    numbered_buttons = numbered_buttons(conn, page, pages)
+    |> contag(:ul, class: "pagination-list")
+
+    next_last ++ numbered_buttons |> contag(:nav, class: "pagination", "aria-label": "pagination")
   end
 
   # Handle the case where there is only a single page, just gives us some disabled buttons
@@ -34,47 +36,43 @@ defmodule FirstBlogWeb.Paginate do
 
   @spec paginate_button(Plug.Conn.t(), String.t() | integer, integer, integer) :: {:safe, iolist}
   defp paginate_button(_conn, "Next", page, pages) when page == pages do
-    contag("Next", :a, class: "pagination is-left", tabindex: "-1")
-    |> contag(:li, class: "pagination-link")
+    contag("Next", :a, class: "pagination-next is-right", disabled: true)
   end
 
   defp paginate_button(_conn, "Previous", 1, _pages) do
-    contag("Previous", :a, class: "pagination is-left", tabindex: "-1")
-    |> contag(:li, class: "pagination")
+    contag("Previous", :a, class: "pagination-previous", disabled: true)
   end
 
   defp paginate_button(_conn, "....", _page, _pages) do
-    contag("....", :a, class: "pagination-link is-left", tabindex: "-1")
-    |> contag(:li, class: "pagination")
+    contag("....", :a, class: "pagination-ellipsis")
+    |> contag(:li, [])
   end
 
   defp paginate_button(conn, "Next", page, _pages) do
     link("Next",
       to: Routes.post_path(conn, :index, page + 1),
-      class: "pagination"
+      class: "pagination-next is-right"
     )
-    |> contag(:li, [])
   end
 
   defp paginate_button(conn, "Previous", page, _pages) do
     link("Previous",
       to: Routes.post_path(conn, :index, page - 1),
-      class: "pagination"
+      class: "pagination-previous"
     )
-    |> contag(:li, [])
   end
 
   defp paginate_button(_conn, same, same, _pages) do
-    contag(same, :a, class: "pagination-link")
-    |> contag(:li, class: "pagination")
+    contag(same, :a, class: "pagination-link is-current")
+    |> contag(:li, [])
   end
 
   defp paginate_button(conn, label, _page, _pages) do
     link(label,
       to: Routes.post_path(conn, :index, label),
-      class: "pagination"
+      class: "pagination-link"
     )
-    |> contag(:li, class: "pagination")
+    |> contag(:li, [])
   end
 
   @doc "Selects the page buttons we need for pagination"
@@ -92,4 +90,5 @@ defmodule FirstBlogWeb.Paginate do
   # Used everywhere to make it easier to pipe HTML chunks into each other
   @spec contag(any(), atom, keyword) :: {:safe, iolist}
   defp contag(body, tag, opts), do: content_tag(tag, body, opts)
+
 end

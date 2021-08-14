@@ -10,7 +10,6 @@ defmodule FirstBlogWeb.PostController do
       posts: Blog.list_posts(page),
       tags: Blog.tags_with_count(),
       page_title: "Blog",
-      total_pages: div(Enum.count(Blog.list_posts), 10) + 1
     ]
 
     render(conn, "index.html", assigns)
