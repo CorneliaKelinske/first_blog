@@ -6,5 +6,5 @@ defmodule FirstBlog.Blog do
     # default
     external_links_new_tab: true,
     # default
-    per_page: 1
+    per_page: 10
 end
