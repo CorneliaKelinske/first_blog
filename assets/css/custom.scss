@@ -55,7 +55,10 @@ html {
 p {margin-bottom: 10px;}
 
 h1 {margin-top: 20px;
-  margin-bottom: 20px;}
+  margin-bottom: 20px;
+  height: 32px !important;
+}
+
 
 span a {
   text-decoration: none !important;
@@ -77,3 +80,8 @@ span a {
 .pagination-next {background-color: hsl(0, 0%, 96%)}
 
 .pagination-previous {background-color: hsl(0, 0%, 96%);}
+
+.message-body h1 {margin-top: 20px;
+  margin-bottom: 20px;
+  height: 32px;
+}

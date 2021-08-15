@@ -1,14 +1,24 @@
-<h1 class=title><%= @post.title %></h1>
+<section class="hero">
+<div class="hero-body">
+
+<article class="message">
+<div class="message-header">
+
+<%= @post.title %>
+</div>
 
 
-    <div class=block>
+<div class=block>
     <div class="blog-date"><%= @post.date %></div>
     <div class="blog-author">Written by <%= @post.author %></div>
-  </div>
+</div>
 
 
-
-
-<div class="blog-body">
+<div class="message-body">
   <%= raw @post.body %>
 </div>
+
+
+</article>
+</div>
+</section>
