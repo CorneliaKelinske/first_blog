@@ -81,7 +81,9 @@ span a {
 
 .pagination-previous {background-color: hsl(0, 0%, 96%);}
 
-.message-body h1 {margin-top: 20px;
+.message-body > h1 {
+  margin-top: 20px;
   margin-bottom: 20px;
-  height: 32px;
+  font-size: 28px;
+  font-weight: bold;
 }
