@@ -29,7 +29,14 @@ but the pure problem-solving aspect of it.
 
 For the next few years, I kept coding on the back-burner. I tried to fit a short session in every day, but my translation business was thriving and I didn't have any
 real coding goals or projects. I completed the Complete Python Bootcamp on [udemy](https://www.udemy.com/), taught by Colt Steele, an amazing teacher (check out his YouTube
-channel: (https://www.youtube.com/c/ColtSteeleCode) and I kept solving the exercises on the [exercism](https://exercism.io/), but at that time, my relationship to code was certainly lacking passion.
+channel: (https://www.youtube.com/c/ColtSteeleCode), and I kept solving the exercises on the [exercism](https://exercism.io/) python track, but at that time, my relationship to code was certainly lacking passion.
+
+And then something happened: I actually used python to build something, namely an MRV calculator. For everyone who is not familiar with the whole strength training 
+vocabulary:
+MRV stands for Maximum Recoverable Volume. It means the maximum number of hard working sets that you can do each week and that your body can recover from so you can still build muscle and get stronger. It is really well explained in the [Scientific Principles of Strength Training] (https://www.youtube.com/watch?v=k7_kCLHOl_0&list=PL1rSl6Pd49IlsiAgFRWNI1ruDGNrMJ092) video series by Juggernaut Training systems, which was in fact the inspiration for my little project. Fun fact: when I started using the Juggernaut AI training spreadsheets for my lifting, I compared the numbers that I got out of my MRV calculator with the MRV values listed for me in the excel files, and lo and behold, they did match!  
+
+And here, without further ado, the MRV calculator in HORRIBLE python spaghetti code...
+
 
 
 ```
@@ -127,12 +134,10 @@ for phase in phases:
 
 ```
 
+While this code is not pretty, it gave me my first little taste of what it feels like to use code for something that I am passionate about.
 
-What the heckenbob?!
+Fast forward to 2020/2021: within a few months my translation business changed rapidly. 
 
 
 
 
-I will also mention my MRV calculator.
-
-This is a paragraph
