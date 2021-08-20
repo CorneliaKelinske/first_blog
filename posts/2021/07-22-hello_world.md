@@ -136,8 +136,19 @@ for phase in phases:
 
 While this code is not pretty, it gave me my first little taste of what it feels like to use code for something that I am passionate about.
 
-Fast forward to 2020/2021: within a few months my translation business changed rapidly. 
+Fast forward to 2020/2021: I saw drastic changes in my translation business. On the one hand, the overall number of translation jobs declined significantly and, on the other,
+there was a massive shift away from typical translation jobs, where I would receive a source text and translate it into another language, to MTPE (machine translation post editing) jobs, where I would receive a source file along with a machine translation of said file, and edit the machine translation.
+Of course, MTPE had been around for quite some time and there had been some MTPE jobs here and there, but literally within months, the majority of my translation requests turned into MTPE requests. I might elaborate on my thoughts on machine translation in a separate post some time, but I am generally open-minded towards MT and believe that for some text types, MT can actually be on par with human translation. Yet, there are text types and jobs, for which it is not suited and thus ends up causing the translator more work than an actual translation while paying about half the price.
 
+The other drastic change that occurred for me in early 2021 was that I fell in love. With Elixir. My husband had been bugging me over and over to stop fiddling around with python and front-end stuff (Colt Steele also has a Web Developer Bootcamp for html, css, javascript on udemy) and to learn Elixir. 
+I knew two things: I wanted to leave the sinking ship of my translation business while it was still afloat and I would not be able to get a job with python. So I started on Elixir.
+It was amazing. To me, functioning programming appears much more intuitive and logical than OOP (Object-Oriented Programming).
+I am having a lot of fun with it.
+
+For the past few months, I have accepted hardly any translation jobs at all and have instead focused on learning Elixir and actually working on my own projects.
+The first project is this little website. The other one is something that I am creating for my son. But it is still early stages, which is why I am keeping it secret for now.
+
+To conclude with, I can say that at the current stage of my coding journey, I am feeling more passionate about coding every day, I am excited about learning more and putting my code to use. And I am grateful for having a husband who is able to mentor me and to bring home the bacon while I am getting up to speed.
 
 
 
