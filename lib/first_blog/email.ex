@@ -1,13 +1,28 @@
 defmodule FirstBlog.Email do
-  import Bamboo.Email
+  @moduledoc "Handles sending email"
+  alias FirstBlog.Email.{Contact, Content}
+  use Bamboo.Mailer, otp_app: :cornelia_kelinske
 
-  def welcome_email do
-    new_email(
-      to: "john@example.com",
-      from: "support@myapp.com",
-      subject: "Welcome to the app.",
-      html_body: "<strong>Thanks for joining!</strong>",
-      text_body: "Thanks for joining!"
-    )
+  @spec contact_message(map) :: {:error, Ecto.Changeset.t()} | {:ok, Bamboo.Email.t()}
+  def contact_message(attrs) do
+    changeset = Contact.changeset(%Content{}, attrs)
+
+    case changeset do
+      %{valid?: true, changes: changes} ->
+        message =
+          %Content{}
+          |> Map.merge(changes)
+          |> Contact.compose()
+
+        {:ok, message}
+
+      _ ->
+        {:error, changeset}
+    end
+  end
+
+  @spec send(Bamboo.Email.t()) :: {:ok, Bamboo.Email.t()} | {:error, binary | map}
+  def send(message) do
+    deliver_now(message)
   end
 end
