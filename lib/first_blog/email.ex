@@ -1,7 +1,7 @@
 defmodule FirstBlog.Email do
   @moduledoc "Handles sending email"
   alias FirstBlog.Email.{Contact, Content}
-  use Bamboo.Mailer, otp_app: :cornelia_kelinske
+  use Bamboo.Mailer, otp_app: :first_blog
 
   @spec contact_message(map) :: {:error, Ecto.Changeset.t()} | {:ok, Bamboo.Email.t()}
   def contact_message(attrs) do
