@@ -2,20 +2,31 @@
 <form class="box">
 <%= form_for @changeset, Routes.contact_path(@conn, :new), fn f -> %>
 <div class="field">
-   <%= label f, :name %>
+   <%= label f, :name, class: "label"%>
   <div class="control">
-    <input class="input" type="text" placeholder="Text input">
-    <%= text_input f, :name %>
+    <%= text_input f, :name, class: "input", type: "text", placeholder: "Your name" %>
   </div>
 </div>
 
 <div class="field">
-     <%= label f, :Email %>
+     <%= label f, :Email, class: "label" %>
   <div class="control has-icons-left has-icons-right">
-    <input class="input" type="email" placeholder="Email input">
+  <%= email_input f, :name, class: "input", type: "email", placeholder: "Your email" %>
     <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>
+  </div>
+</div>
 
+<div class="field">
+  <%= label f, :Message, class: "label" %>
+  <div class="control">
+  <%= textarea f, :name, class: "textarea", placeholder: "Your message" %>
+  </div>
+</div>
 </form>
+
+<div class="control">
+    <%= submit "Submit", class: "button is-dark" %>
+</div>
 <% end %>
