@@ -5,8 +5,7 @@ defmodule FirstBlogWeb.ContactController do
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
-    render(conn, "new.html", page_title: "Contact")
-    #render(conn, "new.html", page_title: "Contact", changeset: new_changeset())
+    render(conn, "new.html", page_title: "Contact", changeset: new_changeset())
   end
 
   def create(conn, params) do
@@ -37,7 +36,7 @@ defmodule FirstBlogWeb.ContactController do
   #   end
   # end
 
-  # defp new_changeset, do: Contact.changeset(%Content{}, %{})
+  defp new_changeset, do: Contact.changeset(%Content{}, %{})
 
   # defp verify(params) do
   #   case Application.get_env(:alan_vardy, :env) do
