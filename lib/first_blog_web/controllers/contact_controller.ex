@@ -1,12 +1,16 @@
 defmodule FirstBlogWeb.ContactController do
   use FirstBlogWeb, :controller
-  #alias FirstBlog.Email
-  #alias FirstBlog.Email.{Contact, Content}
+  alias FirstBlog.Email
+  alias FirstBlog.Email.{Contact, Content}
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
     render(conn, "new.html", page_title: "Contact")
-    #originaly code: render(conn, "new.html", page_title: "Contact", changeset: new_changeset())
+    #render(conn, "new.html", page_title: "Contact", changeset: new_changeset())
+  end
+
+  def create(conn, params) do
+    params |> IO.inspect(label: "13", limit: :infinity, charlists: false)
   end
 
   # @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
@@ -38,7 +42,8 @@ defmodule FirstBlogWeb.ContactController do
   # defp verify(params) do
   #   case Application.get_env(:alan_vardy, :env) do
   #     :systemtest -> {:ok, "We have to mock for system tests"}
-  #     _ -> Recaptcha.verify(params["g-recaptcha-response"])
+  #     _# -> Recaptcha.verify(params["g-recaptcha-response"])
+  #     _ -> "ERROR"
   #   end
   # end
 end
