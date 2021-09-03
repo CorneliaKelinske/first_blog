@@ -22,6 +22,6 @@
      command: "mix coveralls.lcov",
      require_files: ["test/test_helper.exs"],
      env: %{"MIX_ENV" => "test"}},
-    {:credo, command: "mix credo --strict"}
+    {:credo, command: "mix credo"}
   ]
 ]

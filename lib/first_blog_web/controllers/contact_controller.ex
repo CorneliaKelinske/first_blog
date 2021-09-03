@@ -1,6 +1,5 @@
 defmodule FirstBlogWeb.ContactController do
   use FirstBlogWeb, :controller
-  alias FirstBlog.Email
   alias FirstBlog.Email.{Contact, Content}
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
@@ -8,8 +7,8 @@ defmodule FirstBlogWeb.ContactController do
     render(conn, "new.html", page_title: "Contact", changeset: new_changeset())
   end
 
-  def create(conn, params) do
-    params |> IO.inspect(label: "13", limit: :infinity, charlists: false)
+  def create(_conn, params) do
+    params
   end
 
   # @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()

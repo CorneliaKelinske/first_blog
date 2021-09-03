@@ -14,12 +14,17 @@ defmodule FirstBlogWeb.Paginate do
   def build(conn, page) do
     pages = Blog.pages()
 
-    next_last = [paginate_button(conn, "Previous", page, pages), paginate_button(conn, "Next", page, pages)]
+    next_last = [
+      paginate_button(conn, "Previous", page, pages),
+      paginate_button(conn, "Next", page, pages)
+    ]
 
-    numbered_buttons = numbered_buttons(conn, page, pages)
-    |> contag(:ul, class: "pagination-list")
+    numbered_buttons =
+      numbered_buttons(conn, page, pages)
+      |> contag(:ul, class: "pagination-list")
 
-    next_last ++ numbered_buttons |> contag(:nav, class: "pagination", "aria-label": "pagination")
+    (next_last ++ numbered_buttons)
+    |> contag(:nav, class: "pagination", "aria-label": "pagination")
   end
 
   # Handle the case where there is only a single page, just gives us some disabled buttons
@@ -90,5 +95,4 @@ defmodule FirstBlogWeb.Paginate do
   # Used everywhere to make it easier to pipe HTML chunks into each other
   @spec contag(any(), atom, keyword) :: {:safe, iolist}
   defp contag(body, tag, opts), do: content_tag(tag, body, opts)
-
 end
