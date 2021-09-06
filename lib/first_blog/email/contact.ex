@@ -10,8 +10,8 @@ defmodule FirstBlog.Email.Contact do
   @spec changeset(struct(), map()) :: %Ecto.Changeset{}
   def changeset(content, attrs) do
     {content, Content.types()}
-    |> cast(attrs, [:from_email, :name, :message])
-    |> validate_required([:from_email, :name, :message])
+    |> cast(attrs, [:from_email, :name, :subject, :message])
+    |> validate_required([:from_email, :name, :subject, :message])
     |> validate_length(:message, min: 10, max: 1000)
   end
 end

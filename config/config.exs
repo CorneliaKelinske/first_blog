@@ -26,9 +26,7 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-#Configures Swoosh used for contact form
-config :first_blog, FirstBlog.Mailer,
-adapter: Swoosh.Adapters.Test
+
 
 
 

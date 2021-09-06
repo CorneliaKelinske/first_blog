@@ -19,6 +19,12 @@
 </div>
 
 <div class="field">
+  <%= label f, :Subject, class: "label" %>
+  <div class="control">
+  <%= text_input f, :subject, class: "input", placeholder: "What is the subject of your message?" %>
+  </div>
+</div>
+<div class="field">
   <%= label f, :Message, class: "label" %>
   <div class="control">
   <%= textarea f, :name, class: "textarea", placeholder: "Your message" %>

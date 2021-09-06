@@ -1,12 +1,12 @@
 defmodule FirstBlog.UserEmail do
   import Swoosh.Email
 
-  def welcome(user) do
+  def welcome(%{from_email: from_email, name: name, subject: subject, message: message}) do
     new()
-    |> to({user.name, user.email})
-    |> from({"Dr B Banner", "hulk.smash@example.com"})
-    |> subject("Hello, Avengers!")
-    |> html_body("<h1>Hello #{user.name}</h1>")
-    |> text_body("Hello #{user.name}\n")
+    |> to({"Cornelia", "cornelia@example.com"})
+    |> from({name, from_email})
+    |> subject(subject)
+    |> html_body("<h1>#{message}</h1>")
+    |> text_body("#{message}\n")
   end
 end
