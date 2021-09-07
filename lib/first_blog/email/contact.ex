@@ -13,5 +13,6 @@ defmodule FirstBlog.Email.Contact do
     |> cast(attrs, [:from_email, :name, :subject, :message])
     |> validate_required([:from_email, :name, :subject, :message])
     |> validate_length(:message, min: 10, max: 1000)
+    |> IO.inspect(label: "16", limit: :infinity, charlists: false)
   end
 end

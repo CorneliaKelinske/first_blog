@@ -1,6 +1,6 @@
 <h1 class="title">Contact me</h1>
-<form class="box">
-<%= form_for @changeset, Routes.contact_path(@conn, :create), fn f -> %>
+
+<%= form_for @changeset, Routes.contact_path(@conn, :create), [class: "box"], fn f -> %>
 <div class="field">
    <%= label f, :name, class: "label"%>
   <div class="control">
@@ -11,7 +11,7 @@
 <div class="field">
      <%= label f, :Email, class: "label" %>
   <div class="control has-icons-left has-icons-right">
-  <%= email_input f, :name, class: "input", type: "email", placeholder: "Your email" %>
+  <%= email_input f, :from_email, class: "input", type: "email", placeholder: "Your email" %>
     <span class="icon is-small is-left">
       <i class="fas fa-envelope"></i>
     </span>
@@ -19,6 +19,7 @@
 </div>
 
 <div class="field">
+
   <%= label f, :Subject, class: "label" %>
   <div class="control">
   <%= text_input f, :subject, class: "input", placeholder: "What is the subject of your message?" %>
@@ -27,10 +28,10 @@
 <div class="field">
   <%= label f, :Message, class: "label" %>
   <div class="control">
-  <%= textarea f, :name, class: "textarea", placeholder: "Your message" %>
+  <%= textarea f, :message, class: "textarea", placeholder: "Your message" %>
   </div>
 </div>
-</form>
+
 
 <div class="control">
     <%= submit "Submit", class: "button is-dark" %>
