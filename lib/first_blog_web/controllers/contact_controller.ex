@@ -13,9 +13,12 @@ defmodule FirstBlogWeb.ContactController do
 
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
   def create(conn, %{"content" => message_params} = params) do
-    IO.inspect(message_params)
-    with {:ok, message} <- EmailBuilder.create_email(message_params),
-         {:ok, %{}} <- Mailer.deliver(message) do
+
+    changeset = Contact.changeset(message_params)
+
+    with{:ok, content} <- Ecto.Changeset.apply_action(changeset, :insert),
+        %Swoosh.Email{} = message <- EmailBuilder.create_email(content),
+        {:ok, _map} <- Mailer.deliver(message) do
       conn
       |> put_flash(:success, "Your message has been sent successfully")
       |> redirect(to: Routes.page_path(conn, :index))
@@ -27,12 +30,12 @@ defmodule FirstBlogWeb.ContactController do
         |> render("new.html", changeset: changeset)
 
       # Failed recaptcha
-      _ ->
+      _error ->
         conn
-        |> put_flash(:error, "Something went wrong with the recaptcha")
+        |> put_flash(:error, "uuups")
         |> redirect(to: Routes.contact_path(conn, :new))
     end
   end
 
-  defp new_changeset, do: Contact.changeset(%Content{}, %{})
+  defp new_changeset, do: Contact.changeset(%{})
 end

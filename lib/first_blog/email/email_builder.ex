@@ -1,5 +1,6 @@
 defmodule FirstBlog.EmailBuilder do
   import Swoosh.Email
+  alias FirstBlog.Contact
 
   def create_email(%{from_email: from_email, name: name, subject: subject, message: message}) do
     new()
@@ -7,6 +8,7 @@ defmodule FirstBlog.EmailBuilder do
     |> from({name, from_email})
     |> subject(subject)
     |> html_body("<h1>#{message}</h1>")
-    |> text_body("#{message}\n")
+    |> text_body("#{message}\n") |> IO.inspect(label: "11", limit: :infinity, charlists: false)
+
   end
 end
