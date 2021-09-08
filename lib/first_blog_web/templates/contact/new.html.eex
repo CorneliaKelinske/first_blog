@@ -7,6 +7,7 @@
     <%= text_input f, :name, class: "input", type: "text", placeholder: "Your name" %>
   </div>
 </div>
+<%= error_tag f, :name%>
 
 <div class="field">
      <%= label f, :Email, class: "label" %>
@@ -17,6 +18,7 @@
     </span>
   </div>
 </div>
+<%= error_tag f, :from_email%>
 
 <div class="field">
 
@@ -25,12 +27,14 @@
   <%= text_input f, :subject, class: "input", placeholder: "What is the subject of your message?" %>
   </div>
 </div>
+<%= error_tag f, :subject%>
 <div class="field">
   <%= label f, :Message, class: "label" %>
   <div class="control">
   <%= textarea f, :message, class: "textarea", placeholder: "Your message" %>
   </div>
 </div>
+<%= error_tag f, :message%>
 
 
 <div class="control">

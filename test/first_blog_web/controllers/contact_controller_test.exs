@@ -6,4 +6,8 @@ defmodule FirstBlogWeb.ContactControllerTest do
     assert html_response(conn, 200) =~ "Contact me"
   end
 
+  describe "create" do
+    test "delivers email and redirects to index when form is filled in correctly, "
+  end
+
 end

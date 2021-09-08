@@ -9,16 +9,13 @@ defmodule FirstBlogWeb.ContactController do
     render(conn, "new.html", page_title: "Contact", changeset: new_changeset())
   end
 
-
-
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
   def create(conn, %{"content" => message_params}) do
-
     changeset = Contact.changeset(message_params)
 
-    with{:ok, content} <- Ecto.Changeset.apply_action(changeset, :insert),
-        %Swoosh.Email{} = message <- EmailBuilder.create_email(content),
-        {:ok, %{id: _id}} <- Mailer.deliver(message) do
+    with {:ok, content} <- Ecto.Changeset.apply_action(changeset, :insert),
+         %Swoosh.Email{} = message <- EmailBuilder.create_email(content),
+         {:ok, _map} <- Mailer.deliver(message) do
       conn
       |> put_flash(:info, "Your message has been sent successfully")
       |> redirect(to: Routes.page_path(conn, :index))

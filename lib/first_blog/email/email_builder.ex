@@ -8,7 +8,6 @@ defmodule FirstBlog.EmailBuilder do
     |> from({name, from_email})
     |> subject(subject)
     |> html_body("<h1>#{message}</h1>")
-    |> text_body("#{message}\n") 
-
+    |> text_body("#{message}\n")
   end
 end
