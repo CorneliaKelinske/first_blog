@@ -17,7 +17,7 @@ defmodule FirstBlogWeb.ContactController do
          %Swoosh.Email{} = message <- EmailBuilder.create_email(content),
          {:ok, _map} <- Mailer.deliver(message) do
       conn
-      |> put_flash(:info, "Your message has been sent successfully")
+      |> put_flash(:success, "Your message has been sent successfully")
       |> redirect(to: Routes.page_path(conn, :index))
     else
       # Failed changeset validation
