@@ -3,16 +3,16 @@ defmodule FirstBlog.MailerTest do
   alias FirstBlog.{Mailer, EmailBuilder}
   import Swoosh.TestAssertions
 
-  # @valid_data %{from_email => "some_email", name => "rando", subject => "random", message => "blablab"}
+  @valid_params %{
+    from_email: "tester@test.com",
+    name: "testy McTestface",
+    subject: "Testing, testing",
+    message: "Hello, this is a test"
+  }
 
   test "deliver/1 delivers an email from a user to a mailbox" do
     response =
-      %{
-        from_email: "hugo@example.com",
-        name: "Hugo",
-        subject: "test",
-        message: "I am testing this thing"
-      }
+      @valid_params
       |> EmailBuilder.create_email()
       |> Mailer.deliver()
 

@@ -10,7 +10,13 @@ defmodule FirstBlog.Email.Contact do
   def changeset(attrs) do
     {%Content{}, Content.types()}
     |> cast(attrs, [:from_email, :name, :subject, :message])
-    |> validate_required([:from_email, :name, :subject, :message], message: "This box must not be emtpy!")
-    |> validate_length(:message, min: 10, max: 1000, message: "Message needs to be between 10 and 1000 characters")
+    |> validate_required([:from_email, :name, :subject, :message],
+      message: "This box must not be empty!"
+    )
+    |> validate_length(:message,
+      min: 10,
+      max: 1000,
+      message: "Message needs to be between 10 and 1000 characters"
+    )
   end
 end
