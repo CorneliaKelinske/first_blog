@@ -8,6 +8,13 @@ defmodule FirstBlogWeb.ContactControllerTest do
     message: "Hello, this is a test"
   }
 
+  @invalid_params %{
+    from_email: "tester@test.com",
+    name: nil,
+    subject: "Testing, testing",
+    message: "Hello, this is a test"
+  }
+
   test "new renders form", %{conn: conn} do
     conn = get(conn, Routes.contact_path(conn, :new))
     assert html_response(conn, 200) =~ "Contact me"
@@ -22,6 +29,9 @@ defmodule FirstBlogWeb.ContactControllerTest do
       assert redirected_to(conn) == Routes.page_path(conn, :index)
     end
 
-    
+    test "renders errors when params provided are invalid", %{conn: conn} do
+      conn = post(conn, Routes.contact_path(conn, :create), content: @invalid_params)
+      assert html_response(conn, 200) =~ "Contact me"
+    end
   end
 end
