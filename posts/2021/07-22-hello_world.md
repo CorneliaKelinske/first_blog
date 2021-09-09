@@ -29,11 +29,11 @@ but the pure problem-solving aspect of it.
 
 For the next few years, I kept coding on the back-burner. I tried to fit a short session in every day, but my translation business was thriving and I didn't have any
 real coding goals or projects. I completed the Complete Python Bootcamp on [udemy](https://www.udemy.com/), taught by Colt Steele, an amazing teacher (check out his YouTube
-channel: (https://www.youtube.com/c/ColtSteeleCode), and I kept solving the exercises on the [exercism](https://exercism.io/) python track, but at that time, my relationship to code was certainly lacking passion.
+channel: (https://www.youtube.com/c/ColtSteeleCode), and I kept solving the exercises on the [exercism](https://exercism.io/) Python track, but at that time, my relationship to code was certainly lacking passion.
 
-And then something happened: I actually used python to build something, namely an MRV calculator. For everyone who is not familiar with the whole strength training 
+And then something happened: I actually used Python to build something, namely an MRV calculator. For everyone who is not familiar with the whole strength training 
 vocabulary:
-MRV stands for Maximum Recoverable Volume. It means the maximum number of hard working sets that you can do each week and that your body can recover from so you can still build muscle and get stronger. It is really well explained in the [Scientific Principles of Strength Training] (https://www.youtube.com/watch?v=k7_kCLHOl_0&list=PL1rSl6Pd49IlsiAgFRWNI1ruDGNrMJ092) video series by Juggernaut Training systems, which was in fact the inspiration for my little project. Fun fact: when I started using the Juggernaut AI training spreadsheets for my lifting, I compared the numbers that I got out of my MRV calculator with the MRV values listed for me in the excel files, and lo and behold, they did match!  
+MRV stands for Maximum Recoverable Volume. It means the maximum number of hard working sets that you can do each week and that your body can recover from so you can still build muscle and get stronger. It is really well explained in the [Scientific Principles of Strength Training](https://www.youtube.com/watch?v=k7_kCLHOl_0&list=PL1rSl6Pd49IlsiAgFRWNI1ruDGNrMJ092) video series by Juggernaut Training systems, which was in fact the inspiration for my little project. Fun fact: when I started using the Juggernaut AI training spreadsheets for my lifting, I compared the numbers that I got out of my MRV calculator with the MRV values listed for me in the excel files, and lo and behold, they did match!  
 
 And here, without further ado, the MRV calculator in HORRIBLE python spaghetti code...
 
@@ -140,9 +140,9 @@ Fast forward to 2020/2021: I saw drastic changes in my translation business. On 
 there was a massive shift away from typical translation jobs, where I would receive a source text and translate it into another language, to MTPE (machine translation post editing) jobs, where I would receive a source file along with a machine translation of said file, and edit the machine translation.
 Of course, MTPE had been around for quite some time and there had been some MTPE jobs here and there, but literally within months, the majority of my translation requests turned into MTPE requests. I might elaborate on my thoughts on machine translation in a separate post some time, but I am generally open-minded towards MT and believe that for some text types, MT can actually be on par with human translation. Yet, there are text types and jobs, for which it is not suited and thus ends up causing the translator more work than an actual translation while paying about half the price.
 
-The other drastic change that occurred for me in early 2021 was that I fell in love. With Elixir. My husband had been bugging me over and over to stop fiddling around with python and front-end stuff (Colt Steele also has a Web Developer Bootcamp for html, css, javascript on udemy) and to learn Elixir. 
+The other drastic change that occurred for me in early 2021 was that I fell in love. With Elixir. My husband had been bugging me over and over to stop fiddling around with Python and front-end stuff (Colt Steele also has a Web Developer Bootcamp for HTML, CSS, Javascript on udemy) and to learn Elixir. 
 I knew two things: I wanted to leave the sinking ship of my translation business while it was still afloat and I would not be able to get a job with python. So I started on Elixir.
-It was amazing. To me, functioning programming appears much more intuitive and logical than OOP (Object-Oriented Programming).
+It was amazing. To me, FP (functional programming) appears much more intuitive and logical than OOP (Object-Oriented Programming).
 I am having a lot of fun with it.
 
 For the past few months, I have accepted hardly any translation jobs at all and have instead focused on learning Elixir and actually working on my own projects.
