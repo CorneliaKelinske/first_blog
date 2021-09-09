@@ -1,6 +1,8 @@
 defmodule FirstBlog.EmailBuilder do
+  @moduledoc """
+  Uses the passed in map to build an email that can be sent by the Swoop mailer
+  """
   import Swoosh.Email
-  alias FirstBlog.Contact
 
   def create_email(%{from_email: from_email, name: name, subject: subject, message: message}) do
     new()
