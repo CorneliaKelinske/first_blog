@@ -6,7 +6,7 @@ defmodule FirstBlogWeb.ContactController do
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
-    render(conn, "new.html", page_title: "Contact", changeset: new_changeset())
+    render(conn, "new.html", page_title: "Contact", changeset: Contact.changeset(%{}))
   end
 
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
@@ -29,10 +29,8 @@ defmodule FirstBlogWeb.ContactController do
       # Other error
       _error ->
         conn
-        |> put_flash(:error, "Ouuups")
+        |> put_flash(:error, "Email not sent")
         |> redirect(to: Routes.contact_path(conn, :new))
     end
   end
-
-  defp new_changeset, do: Contact.changeset(%{})
 end
