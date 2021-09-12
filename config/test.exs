@@ -20,3 +20,6 @@ config :first_blog, FirstBlogWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+# Configures Swoosh used for contact form
+config :first_blog, FirstBlog.Mailer, adapter: Swoosh.Adapters.Test

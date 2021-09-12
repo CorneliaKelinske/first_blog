@@ -55,7 +55,9 @@ defmodule FirstBlog.MixProject do
       {:postex, "~> 0.1.6"},
       {:excoveralls, "~> 0.13", only: :test, runtime: false},
       {:ex_check, "~> 0.14.0", only: [:dev], runtime: false},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:swoosh, "~> 1.4"},
+      {:hackney, "~> 1.17"}
     ]
   end
 

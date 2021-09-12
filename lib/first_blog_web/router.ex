@@ -24,6 +24,8 @@ defmodule FirstBlogWeb.Router do
     get "/blog/:page", PostController, :index
     resources "/post", PostController, only: [:show]
     resources "/tag", TagController, only: [:index, :show]
+    get "/contact", ContactController, :new
+    post "/contact", ContactController, :create
   end
 
   # Other scopes may use custom stacks.
@@ -44,6 +46,7 @@ defmodule FirstBlogWeb.Router do
     scope "/" do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: FirstBlogWeb.Telemetry
+      forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
 end

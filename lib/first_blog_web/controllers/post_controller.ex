@@ -9,7 +9,7 @@ defmodule FirstBlogWeb.PostController do
       page: page,
       posts: Blog.list_posts(page),
       tags: Blog.tags_with_count(),
-      page_title: "Blog",
+      page_title: "Blog"
     ]
 
     render(conn, "index.html", assigns)

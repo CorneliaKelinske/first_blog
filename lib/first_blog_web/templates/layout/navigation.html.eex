@@ -36,6 +36,10 @@
         <%= link "About me", to: "/about", class: "special-link"%>
       </a>
 
+      <a class="navbar-item">
+        <%= link "Contact", to: "/contact", class: "special-link"%>
+      </a>
+
 
 
 

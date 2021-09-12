@@ -20,4 +20,9 @@ defmodule FirstBlogWeb.PageControllerTest do
     conn = get(conn, "/blog")
     assert html_response(conn, 200) =~ "Blog"
   end
+
+  test "contact", %{conn: conn} do
+    conn = get(conn, "/contact")
+    assert html_response(conn, 200) =~ "Contact me"
+  end
 end
