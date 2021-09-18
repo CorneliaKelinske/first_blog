@@ -10,7 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :first_blog, FirstBlogWeb.Endpoint,
-url: [host: System.get_env("WEB_HOST"), port: 5000],
+  url: [host: System.get_env("WEB_HOST"), port: 5000],
   cache_static_manifest: "priv/static/cache_manifest.json",
   load_from_system_env: true
 

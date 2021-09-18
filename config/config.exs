@@ -7,9 +7,7 @@
 # General application configuration
 use Mix.Config
 
-config :first_blog,
-  ecto_repos: [FirstBlog.Repo]
-
+config :first_blog, ecto_repos: []
 # Configures the endpoint
 config :first_blog, FirstBlogWeb.Endpoint,
   url: [host: "localhost"],

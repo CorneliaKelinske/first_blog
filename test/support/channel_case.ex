@@ -29,12 +29,6 @@ defmodule FirstBlogWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(FirstBlog.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(FirstBlog.Repo, {:shared, self()})
-    end
-
     :ok
   end
 end

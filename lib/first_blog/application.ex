@@ -7,8 +7,6 @@ defmodule FirstBlog.Application do
 
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      FirstBlog.Repo,
       # Start the Telemetry supervisor
       FirstBlogWeb.Telemetry,
       # Start the PubSub system

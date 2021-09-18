@@ -18,8 +18,6 @@ defmodule FirstBlog.DataCase do
 
   using do
     quote do
-      alias FirstBlog.Repo
-
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
@@ -27,13 +25,7 @@ defmodule FirstBlog.DataCase do
     end
   end
 
-  setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(FirstBlog.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(FirstBlog.Repo, {:shared, self()})
-    end
-
+  setup _tags do
     :ok
   end
 
