@@ -12,7 +12,7 @@ use Mix.Config
 config :first_blog, FirstBlogWeb.Endpoint,
   url: [host: System.get_env("WEB_HOST"), port: 5000],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  :swoosh, :api_client, FirstBlog.ApiClient
+  :swoosh, :api_client, FirstBlog.ApiClient,
   adapter: Swoosh.Adapters.Mailgun,
   domain: "connie.codes",
   load_from_system_env: true
