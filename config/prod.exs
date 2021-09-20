@@ -21,7 +21,10 @@ config :swoosh, :api_client, FirstBlog.ApiClient
 
 config :first_blog, FirstBlog.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
-  api_key: api_key,
+  api_key: System.get_env("API_KEY") ||
+  raise """
+    environment variable API_KEY is missing.
+    """,
   domain: "connie.codes"
 # ## SSL Support
 #
