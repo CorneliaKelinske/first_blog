@@ -19,7 +19,7 @@ config :logger, level: :info
 
 config :swoosh, :api_client, FirstBlog.ApiClient
 
-config :firstblog, FirstBlog.Mailer,
+config :first_blog, FirstBlog.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
   domain: "connie.codes"
 # ## SSL Support
