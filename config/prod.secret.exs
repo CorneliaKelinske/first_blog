@@ -10,19 +10,13 @@ secret_key_base =
     environment variable SECRET_KEY_BASE is missing.
     You can generate one by calling: mix phx.gen.secret
     """
-api_key =
-  System.get_env("API_KEY") ||
-  raise """
-    environment variable API_KEY is missing.
-    """
 
 config :first_blog, FirstBlogWeb.Endpoint,
   http: [
     port: String.to_integer(System.get_env("PORT") || "4000"),
     transport_options: [socket_opts: [:inet6]]
   ],
-  secret_key_base: secret_key_base,
-  api_key: api_key
+  secret_key_base: secret_key_base
 
 
 # ## Using releases (Elixir v1.9+)
