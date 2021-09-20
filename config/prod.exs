@@ -25,7 +25,7 @@ config :first_blog, FirstBlog.Mailer,
   raise """
     environment variable API_KEY is missing.
     """,
-  domain: "connie.codes"
+  domain: "firstblog"
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
