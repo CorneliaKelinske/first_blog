@@ -11,7 +11,6 @@ config :first_blog, ecto_repos: []
 # Configures the endpoint
 config :first_blog, FirstBlogWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "33DCEsbcLLuGNnJh5Rcj0F32CgMsJvAgVp5cda6cUx8QLrR8wTxOcQYq5YA/U/uW",
   render_errors: [view: FirstBlogWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: FirstBlog.PubSub,
   live_view: [signing_salt: "n2D8haxk"]
