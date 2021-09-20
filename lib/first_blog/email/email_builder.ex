@@ -6,7 +6,7 @@ defmodule FirstBlog.EmailBuilder do
 
   def create_email(%{from_email: from_email, name: name, subject: subject, message: message}) do
     new()
-    |> to({"Cornelia", "cornelia@example.com"})
+    |> to({"Cornelia", "corneliakelinske@gmail.com"})
     |> from({name, from_email})
     |> subject(subject)
     |> html_body("<h1>#{message}</h1>")
