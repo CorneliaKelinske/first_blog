@@ -12,14 +12,16 @@ use Mix.Config
 config :first_blog, FirstBlogWeb.Endpoint,
   url: [host: System.get_env("WEB_HOST"), port: 5000],
   cache_static_manifest: "priv/static/cache_manifest.json",
-  :swoosh, :api_client, FirstBlog.ApiClient,
-  adapter: Swoosh.Adapters.Mailgun,
-  domain: "connie.codes",
   load_from_system_env: true
 
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :swoosh, :api_client, FirstBlog.ApiClient
+
+config :firstblog, FirstBlog.Mailer,
+  adapter: Swoosh.Adapters.Mailgun,
+  domain: "connie.codes"
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
