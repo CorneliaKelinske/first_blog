@@ -19,6 +19,8 @@ config :logger, level: :info
 
 config :swoosh, :api_client, Swoosh.ApiClient.Hackney
 
+config :swoosh, local: false
+
 config :first_blog, FirstBlog.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
   api_key: System.get_env("API_KEY"),
