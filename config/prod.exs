@@ -21,6 +21,7 @@ config :swoosh, :api_client, FirstBlog.ApiClient
 
 config :first_blog, FirstBlog.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
+  api_key: api_key,
   domain: "connie.codes"
 # ## SSL Support
 #
