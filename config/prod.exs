@@ -17,7 +17,7 @@ config :first_blog, FirstBlogWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :swoosh, :api_client, FirstBlog.ApiClient
+config :swoosh, :api_client, Swoosh.ApiClient.Hackney
 
 config :first_blog, FirstBlog.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
