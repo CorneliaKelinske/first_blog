@@ -13,16 +13,15 @@ personal,coding, brostuff
 
 ==body==
 
-My coding journey began with....  
+My coding journey began with a friendly ....  
 
                                 
-# a friendly "Hello World"
+# "Hello World"  
 
 
-... printed in Python way back in 2018. My husband, who at that time worked as an HVAC mechanic, had just discovered coding for himself and
-challenged me to try it as well. What can I say? I am very competitive and at some point said jokingly that one day I would be better at it than him.
-(While I have certainly not lived up to that challenge in general, I can say that I at least got better at Python than him, simply due to my stubbornness, which
-kept me coding in Python for a long time, while my husband quickly moved on to Ruby and then Elixir.)
+... printed in Python way back in 2018. My husband, who at that time worked as an HVAC mechanic, had just discovered programming for himself and
+challenged me to try it as well. What can I say? I am very competitive and at some point said jokingly that one day I would be better at programming than him. 
+(Needless to say, that day has not come yet, but I might have out-pythoned him, simply because I stuck with it for longer.)
 At first, the reason why I enjoyed coding was not so much the fact that I could use my code to actually do stuff (because, to be honest, I really didn't), 
 but the pure problem-solving aspect of it. 
 
@@ -148,7 +147,9 @@ I am having a lot of fun with it.
 For the past few months, I have accepted hardly any translation jobs at all and have instead focused on learning Elixir and actually working on my own projects.
 The first project is this little website. The other one is something that I am creating for my son. But it is still early stages, which is why I am keeping it secret for now.
 
-To conclude with, I can say that at the current stage of my coding journey, I am feeling more passionate about coding every day, I am excited about learning more and putting my code to use. And I am grateful for having a husband who is able to mentor me and to bring home the bacon while I am getting up to speed.
+To conclude with, I can say that at the current stage of my coding journey, I am feeling more passionate about coding every day, I am excited about learning more and putting my code to use. And I am grateful for having a husband who is able to mentor me and to bring home the bacon while I am getting up to speed.  
+
+
 
 
 
