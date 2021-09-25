@@ -35,11 +35,21 @@ Once you have been playing around a bit and found a language you like, it's time
 a book on your language (sometimes there are free versions available online), or consider taking a language-specific course or bootcamp. If you do an online search you might
 be able to find free or paid courses for your language. One good (paid) option is the [udemy](https://www.udemy.com/) platform where they offer courses for many different languages (they often have good sales so if you have a course in mind, but still have other things to work with, it may be worth it to wait for a promotion to come along).
 
-If you haven't done so already: start solving the exercises on [exercism](https://exercism.io/). 
+If you haven't done so already: start solving the exercises on [exercism](https://exercism.io/). No better way to learn than to write code.  
 
-# 3. Set up your workspace
+
+
+# 3. Set up your own workspace  
+
+
+Install the language(s) you want to work with on your computer and get a code editor. I am using [VS Code](https://code.visualstudio.com/) and have never had any problems with it. Another good idea at this point is to set up a profile on [github](github.com) and to push your code into online github repositories.  
+
 
 # 4. Check out the other end
+
+If you decide that "YES" writing code is for you and you start playing with the idea of becoming a web developer you will have to put in some thought into what kind of
+developer you want to be. Backend (what's under the hood), front-end (the pretty websites visible to the work) or full-stack (both combined). I therefore recommend checking out
+a language from the other end. So if you have been working with let's say Python up until this point, go ahead and try your hand at some CSS.
 
 # 5. Find a project to work on
 
