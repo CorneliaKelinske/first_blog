@@ -6,7 +6,7 @@ Cornelia Kelinske
 
 ==description==
 You are curious about this coding thing, but you don't know how to start or if it is really for you?
-Here are a **six** tips for you.
+Here are a **seven** tips for you.
 
 ==body==
 
@@ -42,20 +42,46 @@ If you haven't done so already: start solving the exercises on [exercism](https:
 # 3. Set up your own workspace  
 
 
-Install the language(s) you want to work with on your computer and get a code editor. I am using [VS Code](https://code.visualstudio.com/) and have never had any problems with it. Another good idea at this point is to set up a profile on [github](github.com) and to push your code into online github repositories.  
+Install the language(s) you want to work with on your computer and get a code editor. I am using [VS Code](https://code.visualstudio.com/) and have never had any problems with it. Another good idea at this point is to set up a profile on [github](github.com) and to push your code to online repositories. That way you have both a backup of your work and, in case you are considering a career in web development, a place where potential employers can view your code and see all the hard work you have been doing.  
 
 
 # 4. Check out the other end
 
 If you decide that "YES" writing code is for you and you start playing with the idea of becoming a web developer you will have to put in some thought into what kind of
-developer you want to be. Backend (what's under the hood), front-end (the pretty websites visible to the work) or full-stack (both combined). I therefore recommend checking out
-a language from the other end. So if you have been working with let's say Python up until this point, go ahead and try your hand at some CSS.
+developer you want to be. Backend (the stuff under the hood), front-end (the pretty websites visible to the world) or full-stack (both combined). Make sure you have checked out languages from both ends before you make your decision. So if you have been working with let's say Python up until this point, go ahead and try your hand at some CSS, and vice versa. 
+
 
 # 5. Find a project to work on
 
-# 6. Immerse yourself in the culture
+
+Eventually, solving exercises from books, bootcamps or on exercism will no longer be enough. Time to take the next step: working on your own project. It doesn't have to be 
+a world-changing idea or complicated. Just find something that you're interested in and that you can use to make your life easier. Heck, you don't even need to write pretty code. My first project was an MRV calculator in horrible Python spaghetti code (https://connie.codes/post/hello_world). The most important thing is that you see that YOU can do things and create things. At this point, the the next tip comes into play.
+
+
+# 6. Work with a web framework
+
+
+You have found a project, you have put work into it, you are having fun with. You are ready to put it online for the world (or at least a select group of people) to see. Time
+to look into web frameworks. To put it very simple, a web framework is what you use to develop and deploy web applications. Chances are, you are working with a language that has
+its own dedicated web framework: e.g. if you are working with Python, you'll look into Django or Flask, if you are working in Ruby, you'll be looking at Ruby on Rails, and if you are working with Elixir, you'll be learning how to use Phoenix.  
+
+
+
+# 7. Immerse yourself in the developer culture
+
+
+Check out whether there is a local meet-up for your particular language or for developers in general and go for it, attend the meet-up (as I am writing this during a global pandemic, in-person meet-ups might not be available at the moment, but some might have shifted to online sessions or be starting up again as restrictions lift).
+
+You can also do some online research and find out whether there is a local developer community and whether you can get in touch with them (contact forms, slack channels,or even in person ... some day).
+
+If you are the more reluctant type and feel that you are not (yet) ready for real interaction, you can use the tool of podcasts to expose yourself to the developer culture. Just use the search function of your podcast player to look for a language-specific podcast, or you can also start out with something less specific like the [CodeNewbie Podcast](https://www.codenewbie.org/podcast). Don't let yourself be discouraged if initially you don't understand a lot of what the people on the podcast are saying. Just listen and let it all sink in. Over time, you will notice that certain things start to sound familiar and before long you will have this "AHA" moment, where you think: "Ha, I actually understand what they are saying!" 
+
+
 
 # Bonus tip for parents
+
+
+Don't feel guilty for dedicating time to your code learning efforts. Of course I am not suggesting that you neglect your duties as a parent/partner altogether. But I do think that it is okay, even for a parent, to take some good old ME TIME. It doesn't have to be hours at a time and I recommend you coordinate with your partner (especially if you have young children) because a) being upfront is good and b) that way, your new-found interest will (hopefully) not be perceived as something negative. If 
 
 ==tags==
 coding
