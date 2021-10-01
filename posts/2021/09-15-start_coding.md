@@ -6,7 +6,10 @@ Cornelia Kelinske
 
 ==description==
 You are curious about this coding thing, but you don't know how to start or if it is really for you?
-Here are a **seven** tips for you.
+Here are a 7 tips for you.
+
+==tags==
+coding, parenting
 
 ==body==
 
@@ -81,7 +84,7 @@ If you are the more reluctant type and feel that you are not (yet) ready for rea
 # Bonus tip for parents
 
 
-Don't feel guilty for dedicating time to your code learning efforts. Of course I am not suggesting that you neglect your duties as a parent/partner altogether. But I do think that it is okay, even for a parent, to take some good old ME TIME. It doesn't have to be hours at a time and I recommend you coordinate with your partner (especially if you have young children) because a) being upfront is good and b) that way, your new-found interest will (hopefully) not be perceived as something negative. If 
+Don't feel guilty for dedicating time to your code learning efforts. Of course I am not suggesting you just go into your room, close the door and code away whenever you feel like it without any consideration for your kids and partner. What I am talking about is that feeling of guilt that we parents (and probably mums in particular) tend to get 
+when we take some time to do something for ourselves. Just ourselves. Not the kids. Not the family. I strongly believe that taking care of ourselves and taking some good old ME TIME is very important and actually helps us being a better parent in the long run. I also believe that taking some time to yourself in order to learn something can set a good example for your children. Seeing that you make learning a priority can encourage them to do the same. Depending on the age of your kids, you can even get them started on coding as well. There are some good apps and programs for kids out there. 
+ 
 
-==tags==
-coding
