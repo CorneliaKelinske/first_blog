@@ -14,7 +14,7 @@ coding, parenting
 ==body==
 
 
-# 1. Find free resources online     
+# 1. Find free resources online   
 
 
 Even just a quick online search will reveal numerous free offers in all kinds of formats that allow you to dip your toes into coding.
@@ -31,7 +31,7 @@ good idea, since the more popular the language, the more (beginner-friendly) res
 you learn at this very early stage is not that important, since all languages will give you an idea of fundamental coding concepts. Just have fun with it! And don't feel committed to whichever language you started on. You can always switch to a different one or try out a few.
 
 
-# 2. Dive deeper        
+# 2. Dive deeper  
 
 
 Once you have been playing around a bit and found a language you like, it's time to dive deeper. Find more language-specific resources. You might want to start reading
@@ -42,27 +42,27 @@ If you haven't done so already: start solving the exercises on [exercism](https:
 
 
 
-# 3. Set up your own workspace      
+# 3. Set up your own workspace  
 
 
 Install the language(s) you want to work with on your computer and get a code editor. I am using [VS Code](https://code.visualstudio.com/) and have never had any problems with it. Another good idea at this point is to set up a profile on [github](github.com) and to push your code to online repositories. That way you have both a backup of your work and, in case you are considering a career in web development, a place where potential employers can view your code and see all the hard work you have been doing.  
 
 
-# 4. Check out the other end        
+# 4. Check out the other end   
 
 
 If you decide that "YES" writing code is for you and you start playing with the idea of becoming a web developer you will have to put in some thought into what kind of
 developer you want to be. Backend (the stuff under the hood), front-end (the pretty websites visible to the world) or full-stack (both combined). Make sure you have checked out languages from both ends before you make your decision. So if you have been working with let's say Python up until this point, go ahead and try your hand at some CSS, and vice versa. 
 
 
-# 5. Find a project to work on      
+# 5. Find a project to work on   
 
 
 Eventually, solving exercises from books, bootcamps or on exercism will no longer be enough. Time to take the next step: working on your own project. It doesn't have to be 
 a world-changing idea or complicated. Just find something that you're interested in and that you can use to make your life easier. Heck, you don't even need to write pretty code. My first project was an MRV calculator in horrible Python spaghetti code (https://connie.codes/post/hello_world). The most important thing is that you see that YOU can do things and create things. At this point, the the next tip comes into play.
 
 
-# 6. Work with a web framework
+# 6. Work with a web framework   
 
 
 You have found a project, you have put work into it, you are having fun with. You are ready to put it online for the world (or at least a select group of people) to see. Time
@@ -71,7 +71,7 @@ its own dedicated web framework: e.g. if you are working with Python, you'll loo
 
 
 
-# 7. Immerse yourself in the developer culture      
+# 7. Immerse yourself in the developer culture   
 
 
 Check out whether there is a local meet-up for your particular language or for developers in general and go for it, attend the meet-up (as I am writing this during a global pandemic, in-person meet-ups might not be available at the moment, but some might have shifted to online sessions or be starting up again as restrictions lift).
@@ -82,9 +82,9 @@ If you are the more reluctant type and feel that you are not (yet) ready for rea
 
 
 
-# Bonus tip for parents     
+# Bonus tip for parents   
 
-
+ 
 Don't feel guilty for dedicating time to your code learning efforts. Of course I am not suggesting you just go into your room, close the door and code away whenever you feel like it without any consideration for your kids and partner. What I am talking about is that feeling of guilt that we parents (and probably mums in particular) tend to get 
 when we take some time to do something for ourselves. Just ourselves. Not the kids. Not the family. I strongly believe that taking care of ourselves and taking some good old ME TIME is very important and actually helps us to be a better parent in the long run. I also believe that taking some time to yourself in order to learn something can set a good example for your children. Seeing that you make learning a priority can encourage them to do the same. Depending on the age of your kids, you can even get them started on coding as well. There are some good apps and programs for kids out there. 
  
