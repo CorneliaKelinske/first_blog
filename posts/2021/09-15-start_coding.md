@@ -71,7 +71,7 @@ its own dedicated web framework: e.g. if you are working with Python, you'll loo
 
 
 
-# 7. Immerse yourself in the developer culture   
+# 7. Dive into the developer culture   
 
 
 Check out whether there is a local meet-up for your particular language or for developers in general and go for it, attend the meet-up (as I am writing this during a global pandemic, in-person meet-ups might not be available at the moment, but some might have shifted to online sessions or be starting up again as restrictions lift).
