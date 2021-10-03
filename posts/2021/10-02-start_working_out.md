@@ -82,7 +82,7 @@ Don't listen to the others (unless it is somebody knowledgeable who is actually 
 
 # Bonus tip for parents  
 
-This is the same bonus tip as in my start [coding post](https://connie.codes/post/start_coding). Don't feel guilty for the time that you dedicate to your workouts! it is okay to take some ME TIME and to take care of yourself. You are also setting a good example for your children. If they see you exercising and making health a priority, that kind of behavior will be normal for them. 
+This is the same bonus tip as in my start [coding post](https://connie.codes/post/start_coding). Don't feel guilty for the time that you dedicate to your workouts! it is okay to take some ME TIME and to take care of yourself. You are also setting a good example for your children. If they grow up seeing you exercising and making health a priority, that kind of thing  will be just normal to them and they will be more likely to adopt those healthy habits for themselves (unless they are teenagers and rebelling against you).
 
 
 
