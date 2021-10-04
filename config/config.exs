@@ -13,7 +13,8 @@ config :first_blog, FirstBlogWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: FirstBlogWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: FirstBlog.PubSub,
-  live_view: [signing_salt: "n2D8haxk"]
+  live_view: [signing_salt: "n2D8haxk"],
+  secret_key_base: "BXCOcT71Lt8Tgu1KBd0YFFdoBiGd5tj/MA0VizTrCqsSFGRTY1F8oHfIr6UeAGUs"
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -32,6 +32,7 @@ config :first_blog, FirstBlog.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
   api_key: api_key,
   domain: "mail.connie.codes"
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

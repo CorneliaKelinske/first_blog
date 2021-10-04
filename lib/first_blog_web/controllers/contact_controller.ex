@@ -29,6 +29,7 @@ defmodule FirstBlogWeb.ContactController do
       # Other error
       error ->
         IO.inspect(error)
+
         conn
         |> put_flash(:error, "Email not sent")
         |> redirect(to: Routes.contact_path(conn, :new))
