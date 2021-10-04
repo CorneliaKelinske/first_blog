@@ -34,14 +34,14 @@ If you know that you hate being out in the cold and rain but live in a cold and 
 You can also give yourself some time to try out different things. Just make sure you put a deadline on the trial phase so you don't end up activity hopping forever.  
 
 
-# 3. Be realistic about your time    
+# 3. Be realistic about your time commitment    
 
 
 It's easy to over-commit, especially when you are excited about making all these good changes happen. But be realistic about how much time you can dedicate to exercising.
 While sometimes finding time is a matter of priorities and making time, there are obligations that you cannot ditch. If you know that you have a full schedule, maybe don't sign up for a program that demands you to go to the gym six times a week for several hours. I think it is better to exercise fewer times, yet consistently, than missing workouts or classes. In the first scenario, you are successfully sticking to a routine and have nothing to feel bad about. In the second scenario, you are not meeting your goals and probably feel bad about it and about yourself. That is not a good place to be in. That is the place where you feel like you fell off the wagon and all of a sudden climbing on feels so hard.
 
 
-# 4. Be realistic about your fitness  
+# 4. Be realistic about your fitness level
 
 
 This piece of advice goes both ways. Don't overestimate yourself but don't underestimate yourself either.
