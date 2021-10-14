@@ -8,7 +8,7 @@ Cornelia Kelinske
 You want to be big and strong or just get into better shape, but don't even know where to start? Here are 7 tips for you.
 
 ==tags==
-coding, parenting
+brostuff, parenting
 
 ==body==
 
