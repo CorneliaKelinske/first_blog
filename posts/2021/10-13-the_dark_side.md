@@ -1,5 +1,5 @@
 ==title==
-The Dark Side of Becoming a Web Developer
+The Dark Side of becoming a web developer
 
 ==author==
 Cornelia Kelinske
@@ -17,6 +17,7 @@ He attributed them to his new life as a web developer, I thought he was just bei
 Until I started switching careers and began to show some of the same alarming behaviors. Since I like analyzing things,
 I looked a bit closer at what was going on and found that learning how to code and becoming a web developer comes with side effects that people should be warned of.
 
+
 # 1. Coding is mood altering  
 
 
@@ -30,7 +31,7 @@ Here is a little picture for illustration:
 
 This diagram sums it up very nicely: the high level of motivation when I start out in the morning, the ups and downs throughout the day and then at least one long stretch of 
 utter despair. The day in the diagram is a good day, though: it ends on a high. A bigger person might manage to not let the coding success or lack thereof impact their mood that much,
-but I am certainly not that person. If the code doesn't work, I will be somewhere between very depressed or very aggressive and angry or all three combined. But wait for when I actually solve
+but I am certainly not that person. If the code doesn't work, I will be somewhere between depressed and angry or both combined. But wait for when I actually solve
 a problem: my family reports they can hear loud shouting and cheering from my office at those times. I think you get the picture!
 
 
@@ -41,14 +42,14 @@ In my previous life as a translator I had days where I had taken on a huge job a
 in one of those phases. I was in the zone. But only the translating zone. The coding zone is worse! Once you are in it, your code is everything there is. I think since writing code requires such 
 a high level of attention and focus  - especially when you are trying to solve a problem - it is very hard to come out of it and to let that focus slip away again. Both my husband and I have noticed
 that after a period of intense coding, everything appears to be overwhelming. People in particular. It's like you need to consciously re-set your mind, before you can go on with your day and be among
-other people again. A few minutes of quiet outside in the fresh air usually help.
+other people again. A few quiet minutes of fresh air outside usually do the trick.
 
 
 # 3. Time flies when you are in the zone  
 
 
-This side effect is closely connected to no. 2, the intensity of writing code. I am a very organized person. I have day planned out. I know what I have to do at what time, and I usually have no problem
-with sticking to a schedule. Enter the coding zone ... Time works differently, here. The 20 minutes you had before you needed to go pick up the kid from school fly by in what feels like one minute. On the bright side,
+This side effect is closely connected to no. 2, the intensity of writing code. I am a very organized person. I have my day planned out. I know what I have to do at what time, and I usually have no problem
+with sticking to a schedule. Enter the coding zone ... Time works differently here. The 20 minutes you had before you needed to go pick up the kid from school fly by in what feels like one minute. On the bright side,
 I've gotten some extra cardio workouts in when I had to sprint down the road to make it to the school on time ...
 
 
@@ -56,7 +57,7 @@ I've gotten some extra cardio workouts in when I had to sprint down the road to 
 
 
 Once again, this is likely a result of no. 2. Focusing so hard on something makes it hard to stop. Often, my mind will just wander off and still try to solve some coding-related issue, while I am
-actually trying to achieve something else, like a conversation, or a shower, or a workout.
+actually trying to achieve something else, like a conversation, a shower, or a workout.
 
 
 # 5. The code will haunt you in your sleep
@@ -83,7 +84,16 @@ It is very hard to get into the MOOOOOOD when you are in the ZOOOOONE !!!
 # 8. The self-doubt
 
 
-Never in my life have I questioned myself as much as since I have started to be serious about becoming a developer.
+Throughout the past months, self-doubt has been my steady companion. It shows up at night, when I question my decision to change careers, fearing that I will never be able to make it. 
+During the day it takes the form of procrastination: sometimes I delay working on a given task, just because I fear I will not be able to achieve it.
+Part of it is certainly that career changes in general are scary. But I also think that the unpredictability of my days and the frequent ups and downs that I encounter are playing a role as well. There are just so many times when something just doesn't work. Times, where one little problem leads to the next and before I know it I am down a rabbit hole trying to find the solution to a sub-problem in order to then be able to get back to my original problem. And all of a sudden all I can see is problems without solutions and so many things I do not understand or still need to learn. That can be very discouraging.
+While I am planning to write a detailed post about how I deal with self-doubt and coding problems that I cannot solve right, I'd like to point out two strategies that work really well for me: 1. walking away for a bit and tackling the problem again at a later point with a fresh mind; and 2. breaking the problem down into little steps.
+
+
+# Final thoughts
+
+
+To end this post on a positive note: I love writing code! Yes, the side effects described in this post are real. But I believe that being aware of them and finding ways to manage them will benefit me in the long run, not only in terms of my career, but in general. As they say: every challenge is an opportunity.
 
 
 
