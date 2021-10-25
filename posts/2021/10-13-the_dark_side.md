@@ -14,8 +14,8 @@ coding, personal
 
 When my husband switched careers and became a web developer I noticed a number of changes in him.
 He attributed them to his new life as a web developer, I thought he was just being a jerk....
-Until I started switching careers and began to show some of the same alarming behaviors. Since I like analyzing things,
-I looked a bit closer at what was going on and found that learning how to code and becoming a web developer comes with side effects that people should be warned of.
+Until I started switching careers and began to show some of the same alarming behaviors! Since I enjoy analyzing things,
+I looked a bit closer at what was going on and found that learning how to code and becoming a web developer comes with side effects that people should be warned about.
 
 
 # 1. Coding is mood altering  
@@ -31,7 +31,7 @@ Here is a little picture for illustration:
 
 This diagram sums it up very nicely: the high level of motivation when I start out in the morning, the ups and downs throughout the day and then at least one long stretch of 
 utter despair. The day in the diagram is a good day, though: it ends on a high. A bigger person might manage to not let the coding success or lack thereof impact their mood that much,
-but I am certainly not that person. If the code doesn't work, I will be somewhere between depressed and angry or both combined. But wait for when I actually solve
+but I am certainly not that person. If the code doesn't work, I will be somewhere between depressed and angry. But wait for when I actually solve
 a problem: my family reports they can hear loud shouting and cheering from my office at those times. I think you get the picture!
 
 
