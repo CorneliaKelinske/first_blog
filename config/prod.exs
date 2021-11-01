@@ -16,6 +16,20 @@ api_key =
     environment variable API_KEY is missing.
     """
 
+recaptcha_private_key =
+  System.get_env("RECAPTCHA_PRIVATE_KEY") ||
+    raise """
+    environment variable RECAPTCHA_PRIVATE_KEY is missing.
+    For example: RECAPTCHA_PRIVATE_KEY=xxxxxxxxxxxxxxxx
+    """
+
+recaptcha_public_key =
+  System.get_env("RECAPTCHA_PUBLIC_KEY") ||
+    raise """
+    environment variable RECAPTCHA_PUBLIC_KEY is missing.
+    For example: RECAPTCHA_PUBLIC_KEY=xxxxxxxxxxxxxxxxxx
+    """
+
 config :first_blog, FirstBlogWeb.Endpoint,
   url: [host: System.get_env("WEB_HOST"), port: 5000],
   cache_static_manifest: "priv/static/cache_manifest.json",
@@ -32,6 +46,11 @@ config :first_blog, FirstBlog.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
   api_key: api_key,
   domain: "mail.connie.codes"
+
+config :recaptcha,
+  public_key: recaptcha_public_key,
+  secret: recaptcha_private_key,
+  json_library: Jason
 
 # ## SSL Support
 #
