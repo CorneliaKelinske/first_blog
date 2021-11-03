@@ -40,4 +40,10 @@
 <div class="control">
     <%= submit "Submit", class: "button is-dark" %>
 </div>
+
+<div>
+ <%= if production?() do %>
+            <%= raw Recaptcha.Template.display() %>
+<% end %>
+</div>
 <% end %>
