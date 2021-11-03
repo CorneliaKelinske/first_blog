@@ -10,10 +10,11 @@ defmodule FirstBlogWeb.ContactController do
   end
 
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
-  def create(conn, %{"content" => message_params}) do
+  def create(conn, %{"content" => message_params} = params) do
     changeset = Contact.changeset(message_params)
 
-    with {:ok, content} <- Ecto.Changeset.apply_action(changeset, :insert),
+    with {:ok, _response} <- Recaptcha.verify(params["g-recaptcha-response"]),
+         {:ok, content} <- Ecto.Changeset.apply_action(changeset, :insert),
          %Swoosh.Email{} = message <- EmailBuilder.create_email(content),
          {:ok, _map} <- Mailer.deliver(message) do
       conn
@@ -27,11 +28,10 @@ defmodule FirstBlogWeb.ContactController do
         |> render("new.html", changeset: changeset)
 
       # Other error
-      error ->
-        IO.inspect(error)
-
+      # Failed recaptcha
+      _ ->
         conn
-        |> put_flash(:error, "Email not sent")
+        |> put_flash(:error, "Something went wrong with the recaptcha")
         |> redirect(to: Routes.contact_path(conn, :new))
     end
   end
