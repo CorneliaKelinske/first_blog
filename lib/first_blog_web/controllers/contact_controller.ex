@@ -10,11 +10,10 @@ defmodule FirstBlogWeb.ContactController do
   end
 
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
-  def create(conn, %{"content" => message_params} = params) do
+  def create(conn, %{"content" => message_params}) do
     changeset = Contact.changeset(message_params)
 
-    with {:ok, _response} <- Recaptcha.verify(params["g-recaptcha-response"]),
-         {:ok, content} <- Ecto.Changeset.apply_action(changeset, :insert),
+    with {:ok, content} <- Ecto.Changeset.apply_action(changeset, :insert),
          %Swoosh.Email{} = message <- EmailBuilder.create_email(content),
          {:ok, _map} <- Mailer.deliver(message) do
       conn
