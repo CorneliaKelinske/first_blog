@@ -43,7 +43,7 @@
 
 <div>
  <%= if production?() do %>
-            <%= raw Recaptcha.Template.display() %>
-<% end %>
+  <%= raw Recaptcha.Template.display() %>
+ <% end %>
 </div>
 <% end %>
