@@ -30,7 +30,7 @@ defmodule FirstBlogWeb.ContactController do
       # Failed recaptcha
       _ ->
         conn
-        |> put_flash(:error, "Something went wrong with the recaptcha")
+        |> put_flash(:error, "ouuupsies")
         |> redirect(to: Routes.contact_path(conn, :new))
     end
   end
