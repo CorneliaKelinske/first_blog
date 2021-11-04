@@ -6,7 +6,7 @@ defmodule FirstBlogWeb.ContactController do
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
-    render(conn, "new.html", page_title: "Contact", changeset: Contact.changeset(%{}))
+    render(conn, "new.html", page_title: "Contact", changeset: Contact.changeset(%{}), captcha_image: captcha_image())
   end
 
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
@@ -32,6 +32,15 @@ defmodule FirstBlogWeb.ContactController do
         conn
         |> put_flash(:error, "ouuupsies")
         |> redirect(to: Routes.contact_path(conn, :new))
+    end
+  end
+
+  defp captcha_image() do
+    case Captcha.get() do
+      {:ok, _text, img_binary } -> img_binary
+        # save text in session, then send img to client
+      {:timeout} -> "Timeout"
+        # log some error
     end
   end
 end

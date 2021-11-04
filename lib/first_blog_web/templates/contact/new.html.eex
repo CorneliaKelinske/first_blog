@@ -41,5 +41,5 @@
     <%= submit "Submit", class: "button is-dark" %>
 </div>
 
-
+ <img src="data:image %>;base64,<%= Base.encode64(@captcha_image)%>">
 <% end %>

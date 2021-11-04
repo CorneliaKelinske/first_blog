@@ -1,5 +1,6 @@
 %{
   "bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], [], "hexpm", "7af5c7e09fe1d40f76c8e4f9dd2be7cebd83909f31fee7cd0e9eadc567da8353"},
+  "captcha": {:hex, :captcha, "0.1.0", "ded2b60e400598b1c6c90ec2b493a08369cc325ae82c20c3f2731dacef38a512", [:make, :mix], [], "hexpm", "40a18e1ce2ed9464cbd2c938f35534f8a5b1a0b6bf5a6682c4ceb92ecba762eb"},
   "certifi": {:hex, :certifi, "2.6.1", "dbab8e5e155a0763eea978c913ca280a6b544bfa115633fa20249c3d396d9493", [:rebar3], [], "hexpm", "524c97b4991b3849dd5c17a631223896272c6b0af446778ba4675a1dff53bb7e"},
   "connection": {:hex, :connection, "1.1.0", "ff2a49c4b75b6fb3e674bfc5536451607270aac754ffd1bdfe175abe4a6d7a68", [:mix], [], "hexpm", "722c1eb0a418fbe91ba7bd59a47e28008a189d47e37e0e7bb85585a016b2869c"},
   "cowboy": {:hex, :cowboy, "2.9.0", "865dd8b6607e14cf03282e10e934023a1bd8be6f6bacf921a7e2a96d800cd452", [:make, :rebar3], [{:cowlib, "2.11.0", [hex: :cowlib, repo: "hexpm", optional: false]}, {:ranch, "1.8.0", [hex: :ranch, repo: "hexpm", optional: false]}], "hexpm", "2c729f934b4e1aa149aff882f57c6372c15399a20d54f65c8d67bef583021bde"},

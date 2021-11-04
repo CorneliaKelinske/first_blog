@@ -26,8 +26,9 @@ defmodule FirstBlog.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
+
       mod: {FirstBlog.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :captcha]
     ]
   end
 
@@ -57,7 +58,8 @@ defmodule FirstBlog.MixProject do
       {:ex_check, "~> 0.14.0", only: [:dev], runtime: false},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:swoosh, "~> 1.4"},
-      {:hackney, "~> 1.17"}
+      {:hackney, "~> 1.17"},
+      {:captcha, "~> 0.1.0"}
     ]
   end
 
