@@ -36,6 +36,14 @@
 </div>
 <%= error_tag f, :message%>
 
+<div class="field">
+   <%= label f, :not_a_robot, class: "label"%>
+  <div class="control">
+    <%= text_input f, :not_a_robot, class: "input", type: "text", placeholder: "Please enter the letters shown below" %>
+  </div>
+</div>
+
+<div class="is-hidden"><%= @captcha_text %></div>
 
 <div class="control">
     <%= submit "Submit", class: "button is-dark" %>
