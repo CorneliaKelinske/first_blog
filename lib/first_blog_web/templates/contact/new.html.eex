@@ -43,11 +43,11 @@
   </div>
 </div>
 
-<div class="is-hidden"><%= @captcha_text %></div>
+<%= text_input f, :answer, type: "text", hidden: true, value: @captcha_text %>
 
 <div class="control">
     <%= submit "Submit", class: "button is-dark" %>
 </div>
+<% end %>
 
  <img src="data:image %>;base64,<%= Base.encode64(@captcha_image)%>">
-<% end %>
