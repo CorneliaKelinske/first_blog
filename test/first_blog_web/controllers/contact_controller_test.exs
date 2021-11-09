@@ -6,6 +6,7 @@ defmodule FirstBlogWeb.ContactControllerTest do
     name: "testy McTestface",
     subject: "Testing, testing",
     message: "Hello, this is a test"
+
   }
 
   @invalid_params %{
@@ -13,6 +14,7 @@ defmodule FirstBlogWeb.ContactControllerTest do
     name: nil,
     subject: "Testing, testing",
     message: "Hello, this is a test"
+
   }
 
   test "new renders form", %{conn: conn} do
