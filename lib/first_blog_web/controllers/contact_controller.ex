@@ -6,7 +6,8 @@ defmodule FirstBlogWeb.ContactController do
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
-    with {:ok, captcha_text, captcha_image} <- Captcha.get() do
+    {:ok, pid} = FirstBlog.Email.Captcha.start_link()
+    with {:ok, captcha_text, captcha_image} <- FirstBlog.Email.Captcha.view(pid) do
       render(conn, "new.html",
         page_title: "Contact",
         changeset: Contact.changeset(%{}),
@@ -14,7 +15,7 @@ defmodule FirstBlogWeb.ContactController do
         captcha_image: captcha_image
       )
     else
-      {:timeout} ->
+     _ ->
         conn
         |> put_flash(:error, "Could not generate captcha")
         |> redirect(to: Routes.contact_path(conn, :new))
@@ -51,9 +52,14 @@ defmodule FirstBlogWeb.ContactController do
           |> redirect(to: Routes.contact_path(conn, :new))
       end
     else
+      changeset = Contact.changeset(message_params)
       conn
       |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
-      |> redirect(to: Routes.contact_path(conn, :new))
+      |> render("new.html",
+            changeset: changeset,
+            captcha_text: Map.fetch!(message_params, "not_a_robot"),
+            captcha_image: Map.fetch!(message_params, "image")
+          )
     end
   end
 end
