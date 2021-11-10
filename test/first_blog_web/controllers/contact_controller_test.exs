@@ -5,17 +5,28 @@ defmodule FirstBlogWeb.ContactControllerTest do
     from_email: "tester@test.com",
     name: "testy McTestface",
     subject: "Testing, testing",
-    message: "Hello, this is a test"
-
+    message: "Hello, this is a test",
+    answer: "tkchv",
+    not_a_robot: "tkchv",
+    image: <<71, 73, 70, 56, 57, 97, 239, 191, 189, 239, 191, 189, 70, 239,
+    191, 189, 239, 191, 189, 239, 191, 189, 239, 191, 189, 239, 191, 189, 39,
+    239, 191, 189, 239, 191, 189, 39, 239, 191, 189, 239, 191, 189, 39, 239,
+    191, 189, 239>>
   }
 
   @invalid_params %{
     from_email: "tester@test.com",
     name: nil,
     subject: "Testing, testing",
-    message: "Hello, this is a test"
-
+    message: "Hello, this is a test",
+    answer: "tkchv",
+    not_a_robot: "tkchv",
+    image: <<71, 73, 70, 56, 57, 97, 239, 191, 189, 239, 191, 189, 70, 239,
+    191, 189, 239, 191, 189, 239, 191, 189, 239, 191, 189, 239, 191, 189, 39,
+    239, 191, 189, 239, 191, 189, 39, 239, 191, 189, 239, 191, 189, 39, 239,
+    191, 189, 239>>
   }
+  
 
   test "new renders form", %{conn: conn} do
     conn = get(conn, Routes.contact_path(conn, :new))

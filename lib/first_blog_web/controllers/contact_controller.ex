@@ -38,7 +38,11 @@ defmodule FirstBlogWeb.ContactController do
         {:error, %Ecto.Changeset{} = changeset} ->
           conn
           |> put_flash(:error, "There was a problem sending your message")
-          |> render("new.html", changeset: changeset, captcha_text: message_params["not_a_robot"], captcha_image: message_params["image"])
+          |> render("new.html",
+            changeset: changeset,
+            captcha_text: Map.fetch!(message_params, "not_a_robot"),
+            captcha_image: Map.fetch!(message_params, "image")
+          )
 
         # Other error
         _ ->
