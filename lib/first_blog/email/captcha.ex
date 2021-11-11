@@ -1,6 +1,9 @@
 defmodule FirstBlog.Email.Captcha do
-  @moduledoc "GenServer for obtaining and storing the contact form captcha"
+  @moduledoc "GenServer for obtaining and storing the contact form captcha, in order to avoid slow-downs
+  due to capture being generated every time before the form is displayed"
   use GenServer
+
+  # Client
 
   def start_link([]) do
     GenServer.start_link(__MODULE__, [], name: __MODULE__)
@@ -10,10 +13,13 @@ defmodule FirstBlog.Email.Captcha do
     GenServer.call(__MODULE__, :view)
   end
 
-  def init(_) do
-    captcha = Captcha.get()
+  # Server
 
-    {:ok, captcha}
+  def init(_) do
+    # Don't handle failure, just let it crash and restart
+    {:ok, captcha_image, captcha_text} = Captcha.get()
+
+    {:ok, {captcha_image, captcha_text}}
   end
 
   def handle_call(:view, _from, captcha) do
@@ -23,6 +29,8 @@ defmodule FirstBlog.Email.Captcha do
   end
 
   def handle_info(:refresh, _state) do
-    {:noreply, Captcha.get()}
+    {:ok, captcha_image, captcha_text} = Captcha.get()
+
+    {:noreply, {captcha_image, captcha_text}}
   end
 end
