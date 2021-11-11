@@ -12,7 +12,8 @@ defmodule FirstBlog.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: FirstBlog.PubSub},
       # Start the Endpoint (http/https)
-      FirstBlogWeb.Endpoint
+      FirstBlogWeb.Endpoint,
+      {FirstBlog.Email.Captcha, []}
       # Start a worker by calling: FirstBlog.Worker.start_link(arg)
       # {FirstBlog.Worker, arg}
     ]
