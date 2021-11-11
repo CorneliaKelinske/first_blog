@@ -6,8 +6,7 @@ defmodule FirstBlogWeb.ContactController do
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
-    {:ok, pid} = FirstBlog.Email.Captcha.start_link()
-    with {:ok, captcha_text, captcha_image} <- FirstBlog.Email.Captcha.view(pid) do
+    with {:ok, captcha_text, captcha_image} <- FirstBlog.Email.Captcha.view() do
       render(conn, "new.html",
         page_title: "Contact",
         changeset: Contact.changeset(%{}),
@@ -15,7 +14,7 @@ defmodule FirstBlogWeb.ContactController do
         captcha_image: captcha_image
       )
     else
-     _ ->
+      _ ->
         conn
         |> put_flash(:error, "Could not generate captcha")
         |> redirect(to: Routes.contact_path(conn, :new))
@@ -26,7 +25,6 @@ defmodule FirstBlogWeb.ContactController do
   def create(conn, %{"content" => message_params}) do
     if message_params["not_a_robot"] === message_params["answer"] do
       changeset = Contact.changeset(message_params)
-      IO.inspect(message_params)
 
       with {:ok, content} <- Ecto.Changeset.apply_action(changeset, :insert),
            %Swoosh.Email{} = message <- EmailBuilder.create_email(content),
@@ -37,13 +35,21 @@ defmodule FirstBlogWeb.ContactController do
       else
         # Failed changeset validation
         {:error, %Ecto.Changeset{} = changeset} ->
-          conn
-          |> put_flash(:error, "There was a problem sending your message")
-          |> render("new.html",
-            changeset: changeset,
-            captcha_text: Map.fetch!(message_params, "not_a_robot"),
-            captcha_image: Map.fetch!(message_params, "image")
-          )
+          with {:ok, captcha_text, captcha_image} <-
+                 FirstBlog.Email.Captcha.view() do
+            conn
+            |> put_flash(:error, "There was a problem sending your message")
+            |> render("new.html",
+              changeset: changeset,
+              captcha_text: captcha_text,
+              captcha_image: captcha_image
+            )
+          else
+            _ ->
+              conn
+              |> put_flash(:error, "Could not generate captcha")
+              |> redirect(to: Routes.contact_path(conn, :new))
+          end
 
         # Other error
         _ ->
@@ -53,13 +59,16 @@ defmodule FirstBlogWeb.ContactController do
       end
     else
       changeset = Contact.changeset(message_params)
+
+      {:ok, captcha_text, captcha_image} = FirstBlog.Email.Captcha.view()
+
       conn
       |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
       |> render("new.html",
-            changeset: changeset,
-            captcha_text: Map.fetch!(message_params, "not_a_robot"),
-            captcha_image: Map.fetch!(message_params, "image")
-          )
+        changeset: changeset,
+        captcha_text: captcha_text,
+        captcha_image: captcha_image
+      )
     end
   end
 end
