@@ -17,7 +17,7 @@ defmodule FirstBlog.Email.Captcha do
 
   def init(_) do
     # Don't handle failure, just let it crash and restart
-    Process.send(self(), :refresh, [])
+    Process.send_after(self(), :refresh, 1_000, [])
     {:ok, :no_captcha}
   end
 
