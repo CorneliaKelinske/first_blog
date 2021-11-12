@@ -5,16 +5,18 @@ defmodule FirstBlogWeb.ContactController do
   alias FirstBlog.EmailBuilder
   alias FirstBlog.Email.Captcha, as: EmailCaptcha
 
+  action_fallback FirstBlogWeb.FallbackController
+
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
-    {captcha_text, captcha_image} = EmailCaptcha.view()
-
-    render(conn, "new.html",
-      page_title: "Contact",
-      changeset: Contact.changeset(%{}),
-      captcha_text: captcha_text,
-      captcha_image: captcha_image
-    )
+    with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
+      render(conn, "new.html",
+        page_title: "Contact",
+        changeset: Contact.changeset(%{}),
+        captcha_text: captcha_text,
+        captcha_image: captcha_image
+      )
+    end
   end
 
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
@@ -27,37 +29,38 @@ defmodule FirstBlogWeb.ContactController do
       conn
       |> put_flash(:success, "Your message has been sent successfully")
       |> redirect(to: Routes.page_path(conn, :index))
+      
     else
       # Failed changeset validation
       {:error, %Ecto.Changeset{} = changeset} ->
-        {captcha_text, captcha_image} = EmailCaptcha.view()
+        with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
+          conn
+          |> put_flash(:error, "There was a problem sending your message")
+          |> render("new.html",
+            changeset: changeset,
+            captcha_text: captcha_text,
+            captcha_image: captcha_image
+          )
+        end
 
-        conn
-        |> put_flash(:error, "There was a problem sending your message")
-        |> render("new.html",
-          changeset: changeset,
-          captcha_text: captcha_text,
-          captcha_image: captcha_image
-        )
-
-      # Other error
       _ ->
         conn
-        |> put_flash(:error, "Something did not work. Please try again!")
+        |> put_flash(:error, "There was a problem sending your message")
         |> redirect(to: Routes.contact_path(conn, :new))
     end
   end
 
   def create(conn, %{"content" => message_params}) do
     changeset = Contact.changeset(message_params)
-    {captcha_text, captcha_image} = EmailCaptcha.view()
 
-    conn
-    |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
-    |> render("new.html",
-      changeset: changeset,
-      captcha_text: captcha_text,
-      captcha_image: captcha_image
-    )
+    with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
+      conn
+      |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
+      |> render("new.html",
+        changeset: changeset,
+        captcha_text: captcha_text,
+        captcha_image: captcha_image
+      )
+    end
   end
 end

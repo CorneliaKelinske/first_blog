@@ -3,12 +3,6 @@ defmodule FirstBlog.Email.Captcha do
   due to capture being generated every time before the form is displayed"
   use GenServer
 
-  if Mix.env() == :prod do
-    @delay 60_000
-  else
-    @delay 1
-  end
-
   # Client
 
   def start_link([]) do
@@ -23,19 +17,30 @@ defmodule FirstBlog.Email.Captcha do
 
   def init(_) do
     # Don't handle failure, just let it crash and restart
-    Process.send_after(self(), :refresh, @delay, [])
-    {:ok, {nil, nil}}
+    Process.send(self(), :refresh, [])
+    {:ok, :no_captcha}
   end
 
-  def handle_call(:view, _from, captcha) do
+  def handle_call(:view, _from, :no_captcha) do
     Process.send(self(), :refresh, [])
 
-    {:reply, captcha, captcha}
+    {:reply, {:error, :no_captcha}, :no_captcha}
+  end
+
+  def handle_call(:view, _from, {captcha_image, captcha_text} = state) do
+    Process.send(self(), :refresh, [])
+
+    {:reply, {:ok, captcha_image, captcha_text}, state}
   end
 
   def handle_info(:refresh, _state) do
-    {:ok, captcha_image, captcha_text} = Captcha.get(10_000)
+    case Captcha.get(10_000) do
+      {:ok, captcha_image, captcha_text} ->
+        {:noreply, {captcha_image, captcha_text}}
 
-    {:noreply, {captcha_image, captcha_text}}
+      {:timeout} ->
+        Process.send_after(self(), :refresh, 1_000, [])
+        {:ok, :no_captcha}
+    end
   end
 end
