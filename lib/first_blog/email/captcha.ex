@@ -17,9 +17,8 @@ defmodule FirstBlog.Email.Captcha do
 
   def init(_) do
     # Don't handle failure, just let it crash and restart
-    {:ok, captcha_image, captcha_text} = Captcha.get()
-
-    {:ok, {captcha_image, captcha_text}}
+    Process.send(self(), :refresh, [])
+    {:ok, {nil, nil}}
   end
 
   def handle_call(:view, _from, captcha) do
