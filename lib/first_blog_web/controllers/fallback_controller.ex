@@ -10,4 +10,13 @@ defmodule FirstBlogWeb.FallbackController do
       captcha_image: nil
     )
   end
+
+  def call(conn, {:error, :no_captcha}) do
+    render(conn, "new.html",
+      page_title: "Contact",
+      changeset: Contact.changeset(%{}),
+      captcha_text: "Failed to create captcha. Please refresh the page!",
+      captcha_image: nil
+    )
+  end
 end
