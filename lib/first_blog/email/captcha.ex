@@ -3,7 +3,7 @@ defmodule FirstBlog.Email.Captcha do
   due to capture being generated every time before the form is displayed"
   use GenServer
 
-  if MixEnv == :prod do
+  if Mix.env() == :prod do
     @delay 60_000
   else
     @delay 1
