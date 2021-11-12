@@ -4,9 +4,9 @@ defmodule FirstBlog.Email.Captcha do
   use GenServer
 
   if MixEnv == :prod do
-    @delay 30_000
+    @delay 60_000
   else
-    @ delay 1
+    @delay 1
   end
 
   # Client
@@ -34,7 +34,7 @@ defmodule FirstBlog.Email.Captcha do
   end
 
   def handle_info(:refresh, _state) do
-    {:ok, captcha_image, captcha_text} = Captcha.get()
+    {:ok, captcha_image, captcha_text} = Captcha.get(10_000)
 
     {:noreply, {captcha_image, captcha_text}}
   end

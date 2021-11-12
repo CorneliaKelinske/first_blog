@@ -58,7 +58,7 @@ defmodule FirstBlog.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:swoosh, "~> 1.4"},
       {:hackney, "~> 1.17"},
-      {:captcha, "~> 0.1.0"}
+      {:captcha, git: "https://github.com/CorneliaKelinske/elixir-captcha.git", branch: "master"}
     ]
   end
 
