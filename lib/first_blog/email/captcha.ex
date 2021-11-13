@@ -40,8 +40,12 @@ defmodule FirstBlog.Email.Captcha do
   end
 
   @impl GenServer
-  def handle_info(:refresh, _state) do
+  def handle_info(:refresh, state) do
     case Captcha.get(10_000) do
+      {:ok, "", _captcha_text} ->
+        Logger.debug("Empty string, discarding")
+        {:noreply, state}
+
       {:ok, captcha_image, captcha_text} ->
         Logger.debug("Captcha created on refresh")
         {:noreply, {captcha_image, captcha_text}}
@@ -54,8 +58,8 @@ defmodule FirstBlog.Email.Captcha do
   end
 
   @impl GenServer
-  def handle_info(msg, state) do
-    Logger.debug("Unexpected message in #{inspect(__MODULE__)}: #{inspect(msg)}")
-    {:noreply, state}
+  def handle_info({_port, {:data, <<text::bytes-size(5), img::binary>>}}, _state) do
+    Logger.debug("Received binary")
+    {:noreply, {text, img}}
   end
 end

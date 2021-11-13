@@ -12,6 +12,7 @@ defmodule FirstBlogWeb.ContactController do
   def new(conn, _params) do
     with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
       Logger.debug("This is the captcha image created on new #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
+      IO.inspect(captcha_image, label: "captcha image created on new")
       render(conn, "new.html",
         page_title: "Contact",
         changeset: Contact.changeset(%{}),
@@ -36,6 +37,7 @@ defmodule FirstBlogWeb.ContactController do
       {:error, %Ecto.Changeset{} = changeset} ->
         with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
           Logger.debug("This is the captcha image I see on create if changeset validation failed #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
+          IO.inspect(captcha_image, label: "captcha image created on refresh after failed changeset validation")
           conn
           |> put_flash(:error, "There was a problem sending your message")
           |> render("new.html",
@@ -57,6 +59,7 @@ defmodule FirstBlogWeb.ContactController do
 
     with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
       Logger.debug("This is the captcha image I see on create if captcha answer was incorrect #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
+      IO.inspect(captcha_image, label: "captcha image received with invalid captcha answer")
       conn
       |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
       |> render("new.html",
