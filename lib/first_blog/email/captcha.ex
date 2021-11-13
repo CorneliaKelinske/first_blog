@@ -40,7 +40,7 @@ defmodule FirstBlog.Email.Captcha do
 
       {:timeout} ->
         Process.send_after(self(), :refresh, 1_000, [])
-        {:ok, :no_captcha}
+        {:noreply, :no_captcha}
     end
   end
 end
