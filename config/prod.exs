@@ -22,7 +22,7 @@ config :first_blog, FirstBlogWeb.Endpoint,
   load_from_system_env: true
 
 # Do not print debug messages in production
-config :logger, level: :info
+config :logger, level: :debug
 
 config :swoosh, :api_client, Swoosh.ApiClient.Hackney
 
