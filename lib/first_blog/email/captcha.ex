@@ -15,24 +15,28 @@ defmodule FirstBlog.Email.Captcha do
 
   # Server
 
+  @impl GenServer
   def init(_) do
     # Don't handle failure, just let it crash and restart
     Process.send(self(), :refresh,[])
     {:ok, :no_captcha}
   end
 
+  @impl GenServer
   def handle_call(:view, _from, :no_captcha) do
     Process.send(self(), :refresh, [])
 
     {:reply, {:error, :no_captcha}, :no_captcha}
   end
 
+  @impl GenServer
   def handle_call(:view, _from, {captcha_image, captcha_text} = state) do
     Process.send(self(), :refresh, [])
 
     {:reply, {:ok, captcha_image, captcha_text}, state}
   end
 
+  @impl GenServer
   def handle_info(:refresh, _state) do
     case Captcha.get(10_000) do
       {:ok, captcha_image, captcha_text} ->
@@ -43,4 +47,11 @@ defmodule FirstBlog.Email.Captcha do
         {:noreply, :no_captcha}
     end
   end
+
+@impl GenServer
+def handle_info(msg, state) do
+  require Logger
+  Logger.debug("Unexpected message in #{inspect __MODULE__}: #{inspect(msg)}")
+  {:noreply, state}
+end
 end
