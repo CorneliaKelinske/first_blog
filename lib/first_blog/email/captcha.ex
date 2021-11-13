@@ -43,15 +43,15 @@ defmodule FirstBlog.Email.Captcha do
   def handle_info(:refresh, state) do
     case Captcha.get(10_000) do
       {:ok, "", _captcha_text} ->
-        Logger.debug("Empty string, discarding")
+        Logger.debug("#{inspect __MODULE__} Empty string, discarding")
         {:noreply, state}
 
       {:ok, captcha_image, captcha_text} ->
-        Logger.debug("Captcha created on refresh")
+        Logger.debug("#{inspect __MODULE__} Captcha created on refresh: #{inspect captcha_image}")
         {:noreply, {captcha_image, captcha_text}}
 
         {:timeout} ->
-        Logger.debug("Timeout on refresh")
+        Logger.debug("#{inspect __MODULE__} Timeout on refresh")
         Process.send_after(self(), :refresh, 1_000, [])
         {:noreply, :no_captcha}
     end
@@ -59,7 +59,7 @@ defmodule FirstBlog.Email.Captcha do
 
   @impl GenServer
   def handle_info({_port, {:data, <<text::bytes-size(5), img::binary>>}}, _state) do
-    Logger.debug("Received binary")
+    Logger.debug("#{inspect __MODULE__} Received binary: #{inspect img}")
     {:noreply, {text, img}}
   end
 end
