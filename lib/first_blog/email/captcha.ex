@@ -17,8 +17,7 @@ defmodule FirstBlog.Email.Captcha do
 
   @impl GenServer
   def init(_) do
-    # Don't handle failure, just let it crash and restart
-    Process.send(self(), :refresh,[])
+    Process.send(self(), :refresh, [])
     {:ok, :no_captcha}
   end
 
@@ -48,10 +47,10 @@ defmodule FirstBlog.Email.Captcha do
     end
   end
 
-@impl GenServer
-def handle_info(msg, state) do
-  require Logger
-  Logger.debug("Unexpected message in #{inspect __MODULE__}: #{inspect(msg)}")
-  {:noreply, state}
-end
+  @impl GenServer
+  def handle_info(msg, state) do
+    require Logger
+    Logger.debug("Unexpected message in #{inspect(__MODULE__)}: #{inspect(msg)}")
+    {:noreply, state}
+  end
 end

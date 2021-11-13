@@ -29,7 +29,6 @@ defmodule FirstBlogWeb.ContactController do
       conn
       |> put_flash(:success, "Your message has been sent successfully")
       |> redirect(to: Routes.page_path(conn, :index))
-      
     else
       # Failed changeset validation
       {:error, %Ecto.Changeset{} = changeset} ->
