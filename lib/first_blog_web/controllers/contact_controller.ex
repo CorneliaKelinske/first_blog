@@ -6,10 +6,12 @@ defmodule FirstBlogWeb.ContactController do
   alias FirstBlog.Email.Captcha, as: EmailCaptcha
 
   action_fallback FirstBlogWeb.FallbackController
+  require Logger
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
     with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
+      Logger.debug("This is the captcha image created on new #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
       render(conn, "new.html",
         page_title: "Contact",
         changeset: Contact.changeset(%{}),
@@ -33,6 +35,7 @@ defmodule FirstBlogWeb.ContactController do
       # Failed changeset validation
       {:error, %Ecto.Changeset{} = changeset} ->
         with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
+          Logger.debug("This is the captcha image I see on create if changeset validation failed #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
           conn
           |> put_flash(:error, "There was a problem sending your message")
           |> render("new.html",
@@ -53,6 +56,7 @@ defmodule FirstBlogWeb.ContactController do
     changeset = Contact.changeset(message_params)
 
     with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
+      Logger.debug("This is the captcha image I see on create if captcha answer was incorrect #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
       conn
       |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
       |> render("new.html",
