@@ -5,26 +5,13 @@ defmodule FirstBlogWeb.ContactControllerTest do
     from_email: "tester@test.com",
     name: "testy McTestface",
     subject: "Testing, testing",
-    message: "Hello, this is a test",
-    answer: "tkchv",
-    not_a_robot: "tkchv",
-    image:
-      <<71, 73, 70, 56, 57, 97, 239, 191, 189, 239, 191, 189, 70, 239, 191, 189, 239, 191, 189,
-        239, 191, 189, 239, 191, 189, 239, 191, 189, 39, 239, 191, 189, 239, 191, 189, 39, 239,
-        191, 189, 239, 191, 189, 39, 239, 191, 189, 239>>
+    message: "Hello, this is a test"
   }
 
   @invalid_params %{
     from_email: "tester@test.com",
     name: nil,
-    subject: "Testing, testing",
-    message: "Hello, this is a test",
-    answer: "tkchv",
-    not_a_robot: "tkchv",
-    image:
-      <<71, 73, 70, 56, 57, 97, 239, 191, 189, 239, 191, 189, 70, 239, 191, 189, 239, 191, 189,
-        239, 191, 189, 239, 191, 189, 239, 191, 189, 39, 239, 191, 189, 239, 191, 189, 39, 239,
-        191, 189, 239, 191, 189, 39, 239, 191, 189, 239>>
+    subject: "Testing, testing"
   }
 
   test "new renders form", %{conn: conn} do
