@@ -32,23 +32,23 @@ defmodule FirstBlog.Email.Captcha do
   end
 
   @impl GenServer
-  def handle_call(:view, _from, {captcha_image, captcha_text} = state) do
+  def handle_call(:view, _from, state) do
     Process.send(self(), :refresh, [])
 
     Logger.debug("Captcha sent on view")
-    {:reply, {:ok, captcha_image, captcha_text}, state}
+    {:reply, {:ok, state}, state}
   end
 
   @impl GenServer
   def handle_info(:refresh, state) do
     case Captcha.get(10_000) do
-      {:ok, "", _captcha_text} ->
+      {:ok, _text, ""} ->
         Logger.debug("#{inspect __MODULE__} Empty string, discarding")
         {:noreply, state}
 
-      {:ok, captcha_image, captcha_text} ->
-        Logger.debug("#{inspect __MODULE__} Captcha created on refresh: #{inspect captcha_image}")
-        {:noreply, {captcha_image, captcha_text}}
+      {:ok, text, image} ->
+        Logger.debug("#{inspect __MODULE__} Captcha created on refresh: #{inspect image}")
+        {:noreply, %{image: image, text: text}}
 
         {:timeout} ->
         Logger.debug("#{inspect __MODULE__} Timeout on refresh")
@@ -58,8 +58,8 @@ defmodule FirstBlog.Email.Captcha do
   end
 
   @impl GenServer
-  def handle_info({_port, {:data, <<text::bytes-size(5), img::binary>>}}, _state) do
-    Logger.debug("#{inspect __MODULE__} Received binary: #{inspect img}")
-    {:noreply, {text, img}}
+  def handle_info({_port, {:data, <<text::bytes-size(5), image::binary>>}}, _state) do
+    Logger.debug("#{inspect __MODULE__} Received binary: #{inspect image}")
+    {:noreply, %{image: image, text: text}}
   end
 end

@@ -10,7 +10,7 @@ defmodule FirstBlogWeb.ContactController do
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
-    with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
+    with {:ok, %{text: captcha_text, image: captcha_image}} <- EmailCaptcha.view() do
       Logger.debug("This is the captcha image created on new #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
       render(conn, "new.html",
         page_title: "Contact",
@@ -34,7 +34,7 @@ defmodule FirstBlogWeb.ContactController do
     else
       # Failed changeset validation
       {:error, %Ecto.Changeset{} = changeset} ->
-        with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
+        with {:ok, %{text: captcha_text, image: captcha_image}} <- EmailCaptcha.view() do
           Logger.debug("This is the captcha image I see on create if changeset validation failed #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
 
           conn
@@ -56,7 +56,7 @@ defmodule FirstBlogWeb.ContactController do
   def create(conn, %{"content" => message_params}) do
     changeset = Contact.changeset(message_params)
 
-    with {:ok, captcha_text, captcha_image} <- EmailCaptcha.view() do
+    with {:ok, %{text: captcha_text, image: captcha_image}} <- EmailCaptcha.view() do
       Logger.debug("This is the captcha image I see on create if captcha answer was incorrect #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
 
       conn
