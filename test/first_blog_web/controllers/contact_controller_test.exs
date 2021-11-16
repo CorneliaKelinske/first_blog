@@ -6,12 +6,9 @@ defmodule FirstBlogWeb.ContactControllerTest do
     name: "testy McTestface",
     subject: "Testing, testing",
     message: "Hello, this is a test",
-    answer: "tkchv",
-    not_a_robot: "tkchv",
-    image:
-      <<71, 73, 70, 56, 57, 97, 239, 191, 189, 239, 191, 189, 70, 239, 191, 189, 239, 191, 189,
-        239, 191, 189, 239, 191, 189, 239, 191, 189, 39, 239, 191, 189, 239, 191, 189, 39, 239,
-        191, 189, 239, 191, 189, 39, 239, 191, 189, 239>>
+    answer: "ngcgT",
+    not_a_robot: "ngcgT",
+    image: "iVBORw0KGgoAAAANSUhEUgAAANwAAAB4CAAAAAC8vMOlAAAaRklEQVR4nIVce/BuVVl+3u"
   }
 
   @invalid_params %{
@@ -19,12 +16,19 @@ defmodule FirstBlogWeb.ContactControllerTest do
     name: nil,
     subject: "Testing, testing",
     message: "Hello, this is a test",
-    answer: "tkchv",
-    not_a_robot: "tkchv",
-    image:
-      <<71, 73, 70, 56, 57, 97, 239, 191, 189, 239, 191, 189, 70, 239, 191, 189, 239, 191, 189,
-        239, 191, 189, 239, 191, 189, 239, 191, 189, 39, 239, 191, 189, 239, 191, 189, 39, 239,
-        191, 189, 239, 191, 189, 39, 239, 191, 189, 239>>
+    answer: "ngcgT",
+    not_a_robot: "ngcgT",
+    image: "iVBORw0KGgoAAAANSUhEUgAAANwAAAB4CAAAAAC8vMOlAAAaRklEQVR4nIVce/BuVVl+3u"
+  }
+
+  @incorrect_answer %{
+    from_email: "tester@test.com",
+    name: "testy McTestface",
+    subject: "Testing, testing",
+    message: "Hello, this is a test",
+    answer: "xyz",
+    not_a_robot: "ngcgT",
+    image: "iVBORw0KGgoAAAANSUhEUgAAANwAAAB4CAAAAAC8vMOlAAAaRklEQVR4nIVce/BuVVl+3u"
   }
 
   test "new renders form", %{conn: conn} do
@@ -43,6 +47,14 @@ defmodule FirstBlogWeb.ContactControllerTest do
 
     test "renders errors when params provided are invalid", %{conn: conn} do
       conn = post(conn, Routes.contact_path(conn, :create), content: @invalid_params)
+      assert html_response(conn, 200) =~ "Contact me"
+    end
+
+    test "renders contact page again, if captcha answer entered is incorrect ", %{
+      conn: conn
+    } do
+      conn = post(conn, Routes.contact_path(conn, :create), content: @incorrect_answer)
+
       assert html_response(conn, 200) =~ "Contact me"
     end
   end

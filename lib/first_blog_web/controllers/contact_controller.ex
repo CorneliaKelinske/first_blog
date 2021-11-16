@@ -3,22 +3,17 @@ defmodule FirstBlogWeb.ContactController do
   alias FirstBlog.Email.Contact
   alias FirstBlog.Mailer
   alias FirstBlog.EmailBuilder
-  alias FirstBlog.Email.Captcha, as: EmailCaptcha
-
-  action_fallback FirstBlogWeb.FallbackController
-  require Logger
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
-    with {:ok, %{text: captcha_text, image: captcha_image}} <- EmailCaptcha.view() do
-      Logger.debug("This is the captcha image created on new #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
-      render(conn, "new.html",
-        page_title: "Contact",
-        changeset: Contact.changeset(%{}),
-        captcha_text: captcha_text,
-        captcha_image: captcha_image
-      )
-    end
+    {captcha_text, captcha_image} = RustCaptcha.generate()
+
+    render(conn, "new.html",
+      page_title: "Contact",
+      changeset: Contact.changeset(%{}),
+      captcha_text: captcha_text,
+      captcha_image: captcha_image
+    )
   end
 
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
@@ -34,17 +29,15 @@ defmodule FirstBlogWeb.ContactController do
     else
       # Failed changeset validation
       {:error, %Ecto.Changeset{} = changeset} ->
-        with {:ok, %{text: captcha_text, image: captcha_image}} <- EmailCaptcha.view() do
-          Logger.debug("This is the captcha image I see on create if changeset validation failed #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
+        {captcha_text, captcha_image} = RustCaptcha.generate()
 
-          conn
-          |> put_flash(:error, "There was a problem sending your message")
-          |> render("new.html",
-            changeset: changeset,
-            captcha_text: captcha_text,
-            captcha_image: captcha_image
-          )
-        end
+        conn
+        |> put_flash(:error, "There was a problem sending your message")
+        |> render("new.html",
+          changeset: changeset,
+          captcha_text: captcha_text,
+          captcha_image: captcha_image
+        )
 
       _ ->
         conn
@@ -55,17 +48,14 @@ defmodule FirstBlogWeb.ContactController do
 
   def create(conn, %{"content" => message_params}) do
     changeset = Contact.changeset(message_params)
+    {captcha_text, captcha_image} = RustCaptcha.generate()
 
-    with {:ok, %{text: captcha_text, image: captcha_image}} <- EmailCaptcha.view() do
-      Logger.debug("This is the captcha image I see on create if captcha answer was incorrect #{inspect(__MODULE__)}: #{inspect(captcha_image)}")
-
-      conn
-      |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
-      |> render("new.html",
-        changeset: changeset,
-        captcha_text: captcha_text,
-        captcha_image: captcha_image
-      )
-    end
+    conn
+    |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
+    |> render("new.html",
+      changeset: changeset,
+      captcha_text: captcha_text,
+      captcha_image: captcha_image
+    )
   end
 end

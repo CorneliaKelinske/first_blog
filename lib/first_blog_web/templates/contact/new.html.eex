@@ -46,9 +46,9 @@
 <%= if @captcha_image do %>
   <%= text_input f, :answer, type: "text", hidden: true, value: @captcha_text %>
   <%= text_input f, :image, type: "binary", hidden: true, value: @captcha_image %>
-  <img src="data:image %>;base64,<%= Base.encode64(@captcha_image)%>">
+  <img src="data:image/png;base64,<%= @captcha_image%>">
 <% else %>
-  <div><%= @captcha_text %></div>
+  <div>Could not create captcha. Please refresh the page!</div>
 <% end %>
 
 <div class="control">
