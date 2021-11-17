@@ -58,7 +58,8 @@ defmodule FirstBlog.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:swoosh, "~> 1.4"},
       {:hackney, "~> 1.17"},
-      {:rustler, "~> 0.22.2"}
+      {:rustler, "~> 0.22.2"},
+      {:uuid, "~> 1.1"}
     ]
   end
 
