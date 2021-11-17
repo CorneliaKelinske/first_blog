@@ -29,19 +29,22 @@ defmodule FirstBlog.Email.SecretAnswer do
 
   def handle_call({:check_in, captcha_text}, _from, state) do
     id = UUID.uuid4()
-    state = Map.put(state, id, captcha_text)
     {:reply, {:ok, id}, state}
   end
 
   def handle_call({:check_out, text, form_id}, _from, state) do
-    IO.inspect(state, label: "state")
-    IO.inspect(form_id, label: "form_id")
+    Process.send(self(), {:delete, form_id}, [])
+    IO.inspect(state, label: "during call")
     case Map.fetch(state, form_id) do
       {:ok, ^text} ->  {:reply, :ok, state}
       {:ok, _} -> {:reply, {:error, :wrong_captcha}, state}
       _ -> {:reply, :error, state}
     end
+  end
 
+  def handle_info({:delete, form_id}, state) do
+    state = Map.delete(state, form_id)
+    {:noreply, state}
   end
 
 end
