@@ -9,7 +9,7 @@ defmodule FirstBlogWeb.ContactController do
   def new(conn, _params) do
     {captcha_text, captcha_image} = RustCaptcha.generate()
     {:ok, id} = SecretAnswer.check_in(captcha_text)
-    IO.inspect(id)
+
 
     render(conn, "new.html",
       page_title: "Contact",
@@ -22,7 +22,7 @@ defmodule FirstBlogWeb.ContactController do
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
   def create(conn, %{"content" => %{"not_a_robot" => text, "form_id" => form_id} = message_params}) do
     changeset = Contact.changeset(message_params)
-    IO.inspect(form_id)
+    IO.inspect(form_id, label: "form_id")
 
     case SecretAnswer.check_out({text, form_id}) do
       :ok ->
@@ -36,12 +36,13 @@ defmodule FirstBlogWeb.ContactController do
           # Failed changeset validation
           {:error, %Ecto.Changeset{} = changeset} ->
             {captcha_text, captcha_image} = RustCaptcha.generate()
+            {:ok, id} = SecretAnswer.check_in(captcha_text)
 
             conn
             |> put_flash(:error, "There was a problem sending your message")
             |> render("new.html",
               changeset: changeset,
-              captcha_text: captcha_text,
+              id: id,
               captcha_image: captcha_image
             )
         end
@@ -54,11 +55,10 @@ defmodule FirstBlogWeb.ContactController do
         |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
         |> render("new.html",
           page_title: "Contact",
-          changeset: Contact.changeset(%{}),
+          changeset: changeset,
           id: id,
           captcha_image: captcha_image
         )
-
       _ ->
         conn
         |> put_flash(:error, "Something went wrong")

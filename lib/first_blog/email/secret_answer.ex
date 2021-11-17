@@ -18,7 +18,7 @@ defmodule FirstBlog.Email.SecretAnswer do
   end
 
   def check_out({text, form_id}) do
-    GenServer.call(__MODULE__, {:check_in, {form_id, text}})
+    GenServer.call(__MODULE__, {:check_out, text, form_id})
   end
 
   # Server
@@ -30,19 +30,18 @@ defmodule FirstBlog.Email.SecretAnswer do
   def handle_call({:check_in, captcha_text}, _from, state) do
     id = UUID.uuid4()
     state = Map.put(state, id, captcha_text)
-    {:reply, {:ok, id}, state} |> IO.inspect(label: "33", limit: :infinity, charlists: false)
+    {:reply, {:ok, id}, state}
   end
 
-  def handle_call({:check_out, {text, form_id}, _from, %{form_id: text} = state}) do
+  def handle_call({:check_out, text, form_id}, _from, state) do
+    IO.inspect(state, label: "state")
+    IO.inspect(form_id, label: "form_id")
+    case Map.fetch(state, form_id) do
+      {:ok, ^text} ->  {:reply, :ok, state}
+      {:ok, _} -> {:reply, {:error, :wrong_captcha}, state}
+      _ -> {:reply, :error, state}
+    end
 
-    {:reply, :ok, state} |> IO.inspect(label: "38", limit: :infinity, charlists: false)
   end
 
-  def handle_call({:check_out, {_text, form_id}, _from, %{form_id: _captcha_text} = state}) do
-    {:reply, {:error, :wrong_captcha}, state} |> IO.inspect(label: "42", limit: :infinity, charlists: false)
-  end
-
-  def handle_call({:check_out, {_text, _form_id}, _from, state}) do
-    {:reply, :error, state} |> IO.inspect(label: "46", limit: :infinity, charlists: false)
-  end
 end
