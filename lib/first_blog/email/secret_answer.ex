@@ -6,7 +6,6 @@ defmodule FirstBlog.Email.SecretAnswer do
   """
   use GenServer
 
-
   # Client
 
   def start_link(%{}) do
@@ -29,22 +28,17 @@ defmodule FirstBlog.Email.SecretAnswer do
 
   def handle_call({:check_in, captcha_text}, _from, state) do
     id = UUID.uuid4()
-    {:reply, {:ok, id}, state}
+    state = Map.put(state, id, captcha_text)
+    {:reply, id, state}
   end
 
   def handle_call({:check_out, text, form_id}, _from, state) do
-    Process.send(self(), {:delete, form_id}, [])
-    IO.inspect(state, label: "during call")
+    new_state = Map.delete(state, form_id)
+
     case Map.fetch(state, form_id) do
-      {:ok, ^text} ->  {:reply, :ok, state}
-      {:ok, _} -> {:reply, {:error, :wrong_captcha}, state}
-      _ -> {:reply, :error, state}
+      {:ok, ^text} -> {:reply, :ok, new_state}
+      {:ok, _} -> {:reply, {:error, :wrong_captcha}, new_state}
+      _ -> {:reply, :error, new_state}
     end
   end
-
-  def handle_info({:delete, form_id}, state) do
-    state = Map.delete(state, form_id)
-    {:noreply, state}
-  end
-
 end
