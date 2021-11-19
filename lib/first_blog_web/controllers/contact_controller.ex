@@ -44,7 +44,12 @@ defmodule FirstBlogWeb.ContactController do
 
       # Failed changeset validation
       {:error, %Ecto.Changeset{} = changeset} ->
-        render_page(conn, changeset, :error, "There was a problem sending your message")
+        render_page(
+          conn,
+          changeset,
+          :error,
+          "There was a problem sending your message"
+        )
 
       # Anything else
       _ ->
@@ -55,7 +60,7 @@ defmodule FirstBlogWeb.ContactController do
   end
 
   defp render_page(conn, changeset, message_type, message) do
-    with {captcha_text, captcha_image} = RustCaptcha.generate() do
+    with {captcha_text, captcha_image} <- RustCaptcha.generate() do
       id = SecretAnswer.check_in(captcha_text)
 
       conn
