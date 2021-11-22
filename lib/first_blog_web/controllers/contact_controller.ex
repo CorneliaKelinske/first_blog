@@ -7,15 +7,16 @@ defmodule FirstBlogWeb.ContactController do
 
   @spec new(Plug.Conn.t(), map) :: Plug.Conn.t()
   def new(conn, _params) do
-    {captcha_text, captcha_image} = RustCaptcha.generate()
-    id = SecretAnswer.check_in(captcha_text)
+    with {captcha_text, captcha_image} <- RustCaptcha.generate() do
+      id = SecretAnswer.check_in(captcha_text)
 
-    render(conn, "new.html",
-      page_title: "Contact",
-      changeset: Contact.changeset(%{}),
-      id: id,
-      captcha_image: captcha_image
-    )
+      render(conn, "new.html",
+        page_title: "Contact",
+        changeset: Contact.changeset(%{}),
+        id: id,
+        captcha_image: captcha_image
+      )
+    end
   end
 
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
@@ -30,32 +31,22 @@ defmodule FirstBlogWeb.ContactController do
       |> put_flash(:success, "Your message has been sent successfully")
       |> redirect(to: Routes.page_path(conn, :index))
     else
-
       # Captcha text was entered incorrectly
       {:error, :wrong_captcha} ->
-        {captcha_text, captcha_image} = RustCaptcha.generate()
-        id = SecretAnswer.check_in(captcha_text)
-
-        conn
-        |> put_flash(:error, "Your answer did not match the letters below. Please try again!")
-        |> render("new.html",
-          page_title: "Contact",
-          changeset: changeset,
-          id: id,
-          captcha_image: captcha_image
+        render_page(
+          conn,
+          changeset,
+          :error,
+          "Your answer did not match the captcha. Please try again!"
         )
 
       # Failed changeset validation
       {:error, %Ecto.Changeset{} = changeset} ->
-        {captcha_text, captcha_image} = RustCaptcha.generate()
-        id = SecretAnswer.check_in(captcha_text)
-
-        conn
-        |> put_flash(:error, "There was a problem sending your message")
-        |> render("new.html",
-          changeset: changeset,
-          id: id,
-          captcha_image: captcha_image
+        render_page(
+          conn,
+          changeset,
+          :error,
+          "There was a problem sending your message"
         )
 
       # Anything else
@@ -63,6 +54,20 @@ defmodule FirstBlogWeb.ContactController do
         conn
         |> put_flash(:error, "Something went wrong")
         |> redirect(to: Routes.contact_path(conn, :new))
+    end
+  end
+
+  defp render_page(conn, changeset, message_type, message) do
+    with {captcha_text, captcha_image} <- RustCaptcha.generate() do
+      id = SecretAnswer.check_in(captcha_text)
+
+      conn
+      |> put_flash(message_type, message)
+      |> render("new.html",
+        changeset: changeset,
+        id: id,
+        captcha_image: captcha_image
+      )
     end
   end
 end
