@@ -17,8 +17,6 @@ defmodule FirstBlogWeb.ContactController do
         captcha_image: captcha_image
       )
     end
-
-    # Make a fallback controller to handle nil returning from this action
   end
 
   @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()

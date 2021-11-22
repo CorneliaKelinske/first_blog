@@ -43,13 +43,11 @@
   </div>
 </div>
 
-<%= if @captcha_image do %>
+
   <%= text_input f, :form_id, type: "text", hidden: true, value: @id %>
   <%= text_input f, :image, type: "binary", hidden: true, value: @captcha_image %>
   <img src="data:image/png;base64,<%= @captcha_image%>">
-<% else %>
-  <div>Could not create captcha. Please refresh the page!</div>
-<% end %>
+
 
 <div class="control">
     <%= submit "Submit", class: "button is-dark" %>
