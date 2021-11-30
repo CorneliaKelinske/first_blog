@@ -13,5 +13,15 @@ coding, personal
 
 ==body==
 
-I am currently working on my own Phoenix app that allows users to upload their image and video files in order to
-show them to others. A fun little project that, per se, is nothing crazy or new. I was able to use *Programming Phoenix 1.4* by Chris McCord, Bruce Tate and José Valim as a great reference to get me started and then there are numerous other resources online. However, when it came to the actual file upload and display part of my project, I found that in most cases files are either not uploaded, but linked to via hyperlink in the template, or files are uploaded into the cloud storage space provided by a third party, like Amazon. 
+I am currently working on a personal little project which evolves around a Phoenix video/image sharing app.
+Nothing crazy, nothing new. There are a lot of similar projects out there and I had, at least for the most part, no
+problems finding reference material and resources to answer my questions along the way.
+
+There were, however, two major sticking points, namely media file upload and media file display.
+
+# 1. File upload
+
+The first time I encountered some difficulties with finding information on how to make my code work was when it came to the part where I wanted to allow my user to upload video and image files. I found that most of the resources I found either shared 
+media content by linking to files via hyperlink or uploaded media content into the cloud storage provided by a third party (e.g. Amazon). Since I wanted a user to actually upload files from their computer, I ruled out the hyperlink option right away, but I also did not want to subscribe to a third-party service, since, at least for now, my project runs on such a small scale.
+
+So my thought was: why not upload the media files into the database? 
