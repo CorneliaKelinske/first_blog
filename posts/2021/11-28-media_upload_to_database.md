@@ -21,7 +21,25 @@ There were, however, two major sticking points, namely media file upload and med
 
 # 1. File upload
 
-The first time I encountered some difficulties with finding information on how to make my code work was when it came to the part where I wanted to allow my user to upload video and image files. I found that most of the resources I found either shared 
-media content by linking to files via hyperlink or uploaded media content into the cloud storage provided by a third party (e.g. Amazon). Since I wanted a user to actually upload files from their computer, I ruled out the hyperlink option right away, but I also did not want to subscribe to a third-party service, since, at least for now, my project runs on such a small scale.
+The first time I encountered some difficulties with finding information on how to make my code work was when it came to the part where I wanted to allow my users to upload video and image files. I found that most of the resources I found either shared media content by linking to files via hyperlink or uploaded media content into the cloud storage provided by a third party (e.g. Amazon). Since my goal was to allow users to actually upload files from their computer, I ruled out the hyperlink option right away, but I also did not want to subscribe to a third-party service, since, at least for now, my project runs on  a very small scale.
 
-So my thought was: why not upload the media files into the database? 
+So my thought was: why not treat users' multimedia files just like all other user data and store them directly in the database?
+
+
+lib
+│   ├── my_little_project
+│   │   ├── accounts
+│   │   │   ├── profile.ex
+│   │   │   ├── user.ex
+│   │   │   ├── user_notifier.ex
+│   │   │   └── user_token.ex
+│   │   ├── accounts.ex
+│   │   ├── application.ex
+│   │   ├── content
+│   │   │   └── upload.ex
+│   │   ├── content.ex
+│   │   ├── mailer.ex
+│   │   └── repo.ex
+│   ├── my_little_project.ex
+│   ├── muy_little_project_web
+
