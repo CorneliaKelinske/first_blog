@@ -38,21 +38,11 @@ Since I believe that storing multimedia files directly in the database is a good
 # 3. Prerequisites
 
 
-Before I start to 
-
-
-
-
-
-
-
-
-
-will split in 3 parts: uploading the file into the database, displaying file in a eex template (for Phoenix 1.5) and then in a heex template in (Phoenix 1.6)
-
+Before we get down to the nitty-gritty, let's make sure we are on the same page. I am assuming that you have set up your Phoenix project including your database and your uploads and user schemas.  
+For reference, my project has an accounts context in which I am defining my user schema and my upload schema is defined in my content context. Accordingly, my /lib/my_project folder has the following structure:
 
 ├── lib
-│   ├── the_little_thinkers_space
+│   ├── my_project
 │   │   ├── accounts
 │   │   │   ├── profile.ex
 │   │   │   └── user.ex
@@ -62,57 +52,7 @@ will split in 3 parts: uploading the file into the database, displaying file in 
 │   │   │   └── upload.ex
 │   │   ├── content.ex
 │   │   └── repo.ex
-│   ├── the_little_thinkers_space.ex
-│   ├── the_little_thinkers_space_web
-│   │   ├── channels
-│   │   │   └── user_socket.ex
-│   │   ├── controllers
-│   │   │   ├── auth.ex
-│   │   │   ├── fallback_controller.ex
-│   │   │   ├── page_controller.ex
-│   │   │   ├── profile_controller.ex
-│   │   │   ├── session_controller.ex
-│   │   │   ├── upload_controller.ex
-│   │   │   └── user_controller.ex
-│   │   ├── endpoint.ex
-│   │   ├── gettext.ex
-│   │   ├── router.ex
-│   │   ├── telemetry.ex
-│   │   ├── templates
-│   │   │   ├── layout
-│   │   │   │   ├── app.html.eex
-│   │   │   │   ├── navigation_home.html.eex
-│   │   │   │   └── navigation_landing.html.eex
-│   │   │   ├── page
-│   │   │   │   ├── home.html.eex
-│   │   │   │   └── index.html.eex
-│   │   │   ├── profile
-│   │   │   │   ├── edit.html.eex
-│   │   │   │   ├── form.html.eex
-│   │   │   │   ├── index.html.eex
-│   │   │   │   ├── new.html.eex
-│   │   │   │   └── show.html.eex
-│   │   │   ├── session
-│   │   │   │   └── new.html.eex
-│   │   │   ├── upload
-│   │   │   │   ├── edit.html.eex
-│   │   │   │   ├── form.html.eex
-│   │   │   │   ├── index.html.eex
-│   │   │   │   ├── new.html.eex
-│   │   │   │   └── show.html.eex
-│   │   │   └── user
-│   │   │       ├── edit.html.eex
-│   │   │       ├── form.html.eex
-│   │   │       ├── index.html.eex
-│   │   │       ├── new.html.eex
-│   │   │       └── show.html.eex
-│   │   └── views
-│   │       ├── error_helpers.ex
-│   │       ├── error_view.ex
-│   │       ├── layout_view.ex
-│   │       ├── page_view.ex
-│   │       ├── profile_view.ex
-│   │       ├── session_view.ex
-│   │       ├── upload_view.ex
-│   │       └── user_view.ex
-│   └── the_little_thinkers_space_web.ex
+│   ├── my_project.ex
+
+And then I have the usual suspects, controllers, views, templates in the /lib/my_project_web folder.
+
