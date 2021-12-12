@@ -9,7 +9,7 @@ When I decided to store multimedia uploads for a small personal Phoenix project 
 
 
 ==tags==
-coding, personal
+coding
 
 ==body==
 
@@ -41,6 +41,7 @@ Since I believe that storing multimedia files directly in the database is a good
 Before we get down to the nitty-gritty, let's make sure we are on the same page. I am assuming that you have set up your Phoenix project including your database and your uploads and user schemas.  
 For reference, my project has an accounts context in which I am defining my user schema and my upload schema is defined in my content context. Accordingly, my /lib/my_project folder has the following structure:
 
+```
 ├── lib
 │   ├── my_project
 │   │   ├── accounts
@@ -54,5 +55,63 @@ For reference, my project has an accounts context in which I am defining my user
 │   │   └── repo.ex
 │   ├── my_project.ex
 
+```
 And then I have the usual suspects, controllers, views, templates in the /lib/my_project_web folder.
 
+
+# 4. Upload schema and file type
+
+The first step was to define my "uploads" schema in my upload.ex file. What's notable in this regard is that I am storing the  image/video file as a binary data.
+
+I also added module attributes specifying valid image types and valid video types as well as a combination of both. In order to be able to use the valid image and video types in my templates, I created corresponding functions returning the valid file types.
+I am using my changeset function to verify that the file type of the file the user wants to upload is included in the valid file types.
+
+```
+defmodule MyProject.Content.Upload do
+  
+  use Ecto.Schema
+  import Ecto.Changeset
+  
+  @valid_image_types ["image/jpeg", "image/jpg", "image/png"]
+  @valid_video_types ["video/mp4", "video/quicktime"]
+  @valid_file_types @valid_image_types ++ @valid_video_types
+
+  def valid_image_types, do: @valid_image_types
+  def valid_video_types, do: @valid_video_types
+  def valid_file_types, do: @valid_file_types
+
+  schema "uploads" do
+    field :description, :string
+    field :file, :binary
+    field :file_type, :string
+    field :title, :string
+    belongs_to :user, User
+
+    timestamps()
+  end
+
+  @doc false
+  def changeset(upload, attrs) do
+    upload
+    |> cast(attrs, [:file, :file_type, :title, :description])
+    |> validate_required([:file, :file_type, :title, :description],
+      message: "This box must not be empty!"
+    )
+    |> validate_inclusion(:file_type, @valid_file_types, message: "Wrong file type!")
+  end
+end
+```
+And just to be extra thorough: my content.ex file includes a create_upload function, which I will not elaborate on, since I believe that it is one of the functions that the Phoenix generator generates by default.
+
+
+# 5. Upload controller
+
+The upload controller was where things started to get interesting. 
+
+Plug.Upload(https://hexdocs.pm/plug/Plug.Upload.html) => file is stored temporarily and represented with a Plug.Upload struct (=> I can pattern match on this!!!)
+
+
+ 
+# 6. Upload view and templates (Phoenix 1.5)
+
+# 7. Upload view and template (Phoenix 1.6)
