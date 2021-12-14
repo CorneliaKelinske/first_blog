@@ -106,9 +106,84 @@ And just to be extra thorough: my content.ex file includes a create_upload funct
 
 # 5. Upload controller
 
-The upload controller was where things started to get interesting. 
+The upload controller was where things started to get interesting:
+
+```
+defmodule MyProjectWeb.UploadController do
+  use MyProjectWeb, :controller
+  
+  alias MyProject.Content
+  alias MyProject.Content.Upload  
+
+  [...]
+
+  def create(conn, %{"upload" => upload}) do
+    user = conn.assigns.current_user
+
+    with :ok <- Bodyguard.permit(Upload, :create, user, upload),
+         {:ok, params, _path} <- parse_upload_params(upload),
+         {:ok, upload} <- Content.create_upload(user, params) do
+      conn
+      |> put_flash(:info, "File uploaded successfully.")
+      |> redirect(to: Routes.upload_path(conn, :show, upload))
+    else
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_flash(:error, "Oops, something went wrong!")
+        |> render("new.html", changeset: changeset)
+
+      {:error, :file_not_uploaded} ->
+        conn
+        |> put_flash(:error, "Please select a file!")
+        |> redirect(to: Routes.upload_path(conn, :new))
+
+      {:error, :cannot_read_file} ->
+        conn
+        |> put_flash(:error, "Cannot read file!")
+        |> redirect(to: Routes.upload_path(conn, :new))
+
+      {:error, :unauthorized} ->
+        conn
+        |> put_flash(:error, "You are not allowed to do this!")
+        |> redirect(to: Routes.page_path(conn, :home))
+    end
+  end
+
+  defp parse_upload_params(upload) do
+    with %{
+           "title" => title,
+           "description" => description,
+           "upload" => %Plug.Upload{path: path, content_type: content_type}
+         } <- upload,
+         {:ok, binary} <- File.read(path) do
+      {:ok,
+       %{
+         "file" => binary,
+         "title" => title,
+         "description" => description,
+         "file_type" => content_type
+       }, path}
+    else
+      map when is_map(map) -> {:error, :file_not_uploaded}
+      {:error, _} -> {:error, :cannot_read_file}
+    end
+  end
+
+end
+
+```
+
+A note on the side first: I am using the Bodyguard library for authorization, that's where the "Bodyguard.permit" function in my create function comes from. If you are not using Bodyguard for your project, just ignore this line.
+
+
+
+
 
 Plug.Upload(https://hexdocs.pm/plug/Plug.Upload.html) => file is stored temporarily and represented with a Plug.Upload struct (=> I can pattern match on this!!!)
+Plug.Upload gives me the path to where the media file is temporarily stored.
+I can then feed that path as the argument to file.read.
+File.reads then returns the binary stored under the file path.
+Tata, that's the video/image binary that I want to store in my database.
 
 
  
