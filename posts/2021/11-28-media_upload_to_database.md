@@ -173,16 +173,26 @@ end
 
 ```
 
-A note on the side first: I am using the Bodyguard library for authorization, that's where the "Bodyguard.permit" function in my create function comes from. If you are not using Bodyguard for your project, just ignore this line.
+A note on the side: I am using the Bodyguard library for authorization, that's where the "Bodyguard.permit" in my create function comes from. If you are not using Bodyguard for your project, just ignore this line.
+
+Let's look at the upload. Our initial upload in the create function is what the user inputs into the "new upload form" under /uploads/new and what is subsequently sent through the form to the upload controller. It looks like this:
+
+```
+%{
+"description" => "Some description",
+"title" => "Some title",
+"upload" => %Plug.Upload{
+content_type: "image/jpeg",
+filename: "IMG_5560.jpg",
+path: "/tmp/plug-1639/multipart-1639441487-618453998432105-6"
+}
+```
+
+What is most important in this map is our "upload" key-value pair. As we can see above, thanks to Plug, the data from the user's file input is represented in a Plug.Upload struct. In short, Plug.Upload stores the uploaded files in a temporary directory while the process requesting the files is alive. Afterwards, the files are deleted from said directory (see the [hexdocs](https://hexdocs.pm/plug/Plug.Upload.html) for more information on Plug.Upload).
+
+In order not to blow my create function entirely out of proportion and to separate my concerns, I have moved the logic for processing my upload into the private "parse_upload_params" function. There, I pattern match on the Plug.Upload struct to obtain the path to where the uploaded file is stored in the temporary directory. I can then use said path as the argument in the File.read function which - in a successful scenario - will return a tuple with :ok and the binary object that contains the contents of whatever the path leads to, i.e. in our case the image/video data in binary format.
 
 
-
-
-
-Plug.Upload(https://hexdocs.pm/plug/Plug.Upload.html) => file is stored temporarily and represented with a Plug.Upload struct (=> I can pattern match on this!!!)
-Plug.Upload gives me the path to where the media file is temporarily stored.
-I can then feed that path as the argument to file.read.
-File.reads then returns the binary stored under the file path.
 Tata, that's the video/image binary that I want to store in my database.
 
 
