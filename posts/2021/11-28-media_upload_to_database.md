@@ -28,7 +28,7 @@ There were, however, two major sticking points, namely media file upload and med
 
 Unlike the projects that I used as reference for my own, I neither wanted to share videos or images via hyperlink in my .eex template nor did I want to use a third-party cloud storage provider, such as Amazon. My thought was: why not treat users' multimedia files just like all other user data? Why not store them directly in the database and then retrieve and display them from there in my .(h)eex templates?
 
-I was able to find bits and pieces of information on how to achieve this scattered across various threads and blog posts, but there was no comprehensive guide addressing both steps: 1. uploading multimedia files from a web app into the repository and 2. displaying those files via the .(h)eex templates.
+I was able to find bits and pieces of information on how to achieve this scattered across various threads and blog posts, but there was no comprehensive guide addressing both steps: 1. uploading multimedia files from a web app into the database and 2. displaying those files via the .(h)eex templates.
 
 While step 1 was relatively easy, it took me a while to figure out the right format for the image and video display in my .eex template, and then, after I switched over to Phoenix 1.6, to find a way to do the same in my .heex template. 
 
@@ -173,7 +173,7 @@ end
 
 ```
 
-A note on the side: I am using the Bodyguard library for authorization, that's where the "Bodyguard.permit" in my create function comes from. If you are not using Bodyguard for your project, just ignore this line.
+A note on the side: I am using the Bodyguard library for authorization, that's where the "Bodyguard.permit" in my create function comes from. If you are not using Bodyguard for your project, just ignore this line and the corresponding "{:error, :unauthorized}" else statement.
 
 Let's look at the upload. Our initial upload in the create function is what the user inputs into the "new upload form" under /uploads/new and what is subsequently sent through the form to the upload controller. It looks like this:
 
@@ -191,6 +191,9 @@ path: "/tmp/plug-1639/multipart-1639441487-618453998432105-6"
 What is most important in this map is our "upload" key-value pair. As we can see above, thanks to Plug, the data from the user's file input is represented in a Plug.Upload struct. In short, Plug.Upload stores the uploaded files in a temporary directory while the process requesting the files is alive. Afterwards, the files are deleted from said directory (see the [hexdocs](https://hexdocs.pm/plug/Plug.Upload.html) for more information on Plug.Upload).
 
 In order not to blow my create function entirely out of proportion and to separate my concerns, I have moved the logic for processing my upload into the private "parse_upload_params" function. There, I pattern match on the Plug.Upload struct to obtain the path to where the uploaded file is stored in the temporary directory. I can then use said path as the argument in the File.read function which - in a successful scenario - will return a tuple with :ok and the binary object that contains the contents of whatever the path leads to, i.e. in our case the image/video data in binary format.
+
+This means that at this point we have all the parameters required for our uploads schema and, in the success case, the parse_upload_params function will return an :ok-tuple with those parameters and the - now no longer important - path. 
+These params, along with the user (that we obtain through conn.assigns.current_user at the beginning of the create function), are then passed into the Content.create_upload function by our create function.
 
 
 Tata, that's the video/image binary that I want to store in my database.
