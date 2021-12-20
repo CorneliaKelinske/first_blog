@@ -193,13 +193,21 @@ What is most important in this map is our "upload" key-value pair. As we can see
 In order not to blow my create function entirely out of proportion and to separate my concerns, I have moved the logic for processing my upload into the private "parse_upload_params" function. There, I pattern match on the Plug.Upload struct to obtain the path to where the uploaded file is stored in the temporary directory. I can then use said path as the argument in the File.read function which - in a successful scenario - will return a tuple with :ok and the binary object that contains the contents of whatever the path leads to, i.e. in our case the image/video data in binary format.
 
 This means that at this point we have all the parameters required for our uploads schema and, in the success case, the parse_upload_params function will return an :ok-tuple with those parameters and the - now no longer important - path. 
-These params, along with the user (that we obtain through conn.assigns.current_user at the beginning of the create function), are then passed into the Content.create_upload function by our create function.
+These params, along with the user (that we obtain through conn.assigns.current_user at the beginning of the create function), are then passed into the Content.create_upload function by the create function in our upload controller and stored in the database.
 
-
-Tata, that's the video/image binary that I want to store in my database.
-
+At this point, we have achieved the first step, namely, storing multimedia data in binary format in our database.
 
  
-# 6. Upload view and templates (Phoenix 1.5)
+# 6. Upload template (Phoenix 1.5)
+
+When I first started on my project, I was still using Phoenix 1.5 and the second step, i.e. displaying the multimedia data stored in the database in my template, was technically straightforward. In order to display the multimedia data in my html templates, I had to convert the binary data to base64-encoded data. Luckily, Elixir includes the Base module which provides a number of data encoding and decoding functions including encode64/2. The hardest part of this step was doing the research and finding the right code combination that I had to use in my html templates in order to get the image/video source set up correctly. I tried a few things, and finally found that the following works (I used this code in my upload/show.html.eex file)
+
+Image: <img src="data:<%= @upload.file_type %>;base64,<%= Base.encode64(@upload.file)%>">
+Video: <video width="320" height="240" autoplay controls>
+      <source src="data:video/mp4;base64,<%= Base.encode64(@upload.file)%>" />
+      </video>
+
 
 # 7. Upload view and template (Phoenix 1.6)
+
+All was good until I switched my 
