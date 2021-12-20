@@ -16,10 +16,9 @@ coding
 # 1. Project background
 
 
-I am currently working on a personal little project which evolves around a Phoenix video/image sharing app.
+I am currently working on a personal project that evolves around a Phoenix video/image-sharing app.
 Nothing crazy, nothing new. There are a lot of similar projects out there and I had, at least for the most part, no
 problems finding reference material and resources to answer my questions along the way.
-
 There were, however, two major sticking points, namely media file upload and media file display.
 
 
@@ -32,13 +31,13 @@ I was able to find bits and pieces of information on how to achieve this scatter
 
 While step 1 was relatively easy, it took me a while to figure out the right format for the image and video display in my .eex template, and then, after I switched over to Phoenix 1.6, to find a way to do the same in my .heex template. 
 
-Since I believe that storing multimedia files directly in the database is a good solution for small-scale projects, I would like to save those developers who agree with me there some time. Please find below the comprehensive guide I wish I had had.
+Since I believe that storing multimedia files directly in the database is a good solution for small-scale projects, I would like to save those who attempt to do the same thing some time. Please find below the comprehensive guide I wish I had had.
 
 
 # 3. Prerequisites
 
 
-Before we get down to the nitty-gritty, let's make sure we are on the same page. I am assuming that you have set up your Phoenix project including your database and your uploads and user schemas.  
+Before we get down to the nitty-gritty, let's make sure we are on the same page. I am assuming that you have set up your Phoenix project including your repo and your uploads and user schemas.  
 For reference, my project has an accounts context in which I am defining my user schema and my upload schema is defined in my content context. Accordingly, my /lib/my_project folder has the following structure:
 
 ```
@@ -59,7 +58,7 @@ For reference, my project has an accounts context in which I am defining my user
 And then I have the usual suspects, controllers, views, templates in the /lib/my_project_web folder.
 
 
-# 4. Upload schema and file type
+# 4. Upload schema
 
 The first step was to define my "uploads" schema in my upload.ex file. What's notable in this regard is that I am storing the  image/video file as a binary data.
 
@@ -101,7 +100,7 @@ defmodule MyProject.Content.Upload do
   end
 end
 ```
-And just to be extra thorough: my content.ex file includes a create_upload function, which I will not elaborate on, since I believe that it is one of the functions that the Phoenix generator generates by default.
+And just to be extra thorough: my content.ex file includes a create_upload function, which I will not elaborate on, since it is one of the functions that the Phoenix generator generates by default.
 
 
 # 5. Upload controller
@@ -200,14 +199,54 @@ At this point, we have achieved the first step, namely, storing multimedia data 
  
 # 6. Upload template (Phoenix 1.5)
 
-When I first started on my project, I was still using Phoenix 1.5 and the second step, i.e. displaying the multimedia data stored in the database in my template, was technically straightforward. In order to display the multimedia data in my html templates, I had to convert the binary data to base64-encoded data. Luckily, Elixir includes the Base module which provides a number of data encoding and decoding functions including encode64/2. The hardest part of this step was doing the research and finding the right code combination that I had to use in my html templates in order to get the image/video source set up correctly. I tried a few things, and finally found that the following works (I used this code in my upload/show.html.eex file)
+When I first started on my project, I was still using Phoenix 1.5 and the second step, i.e. displaying the multimedia data stored in the database in my template, was technically straightforward. In order to display the multimedia data in my .eex templates, I had to convert the binary data to base64-encoded data. Luckily, Elixir includes the Base module which provides a number of data encoding and decoding functions including encode64/2. The hardest part of this step was doing the research and finding the right code combination that I had to use in my templates in order to get the image/video source set up correctly. I tried a few things, and finally found that the following works (I used this code in my upload/show.html.eex file):
 
-Image: <img src="data:<%= @upload.file_type %>;base64,<%= Base.encode64(@upload.file)%>">
-Video: <video width="320" height="240" autoplay controls>
-      <source src="data:video/mp4;base64,<%= Base.encode64(@upload.file)%>" />
-      </video>
+Image:
+``` 
+<img src="data:<%= @upload.file_type %>;base64,<%= Base.encode64(@upload.file)%>"> 
+```
+
+Video:
+```
+<video width="320" height="240" autoplay controls>
+  <source src="data:video/mp4;base64,<%= Base.encode64(@upload.file)%>" />
+</video>
+```
 
 
 # 7. Upload view and template (Phoenix 1.6)
 
-All was good until I switched my 
+All was good until I switched my application over to Phoenix 1.6 and the .heex templates did not allow me to interpolate my Elixir code inside the tags. I found that to be very frustrating. Eventually, I figured out the following workaround:
+
+Phoenix.HTML provides the sigil_E macro for safe EEx syntax inside source files (see the [hexdocs](https://hexdocs.pm/phoenix/0.11.0/Phoenix.HTML.html) documentation). So I ended up creating a display_image and a display_video function in my upload_view.ex file, which respectively made use of the sigil_E macro to basically create the same code I used previously in the Phoenix 1.5 .eex template and which I was then able to call from inside the .heex template:
+
+/upload_view.ex:
+
+```
+def display_image(%Upload{file: file, file_type: file_type}) do
+  ~E"<img src=data:<%= file_type %>;base64,<%= Base.encode64(file) %>>"
+end
+
+def display_video(%Upload{file: file}) do
+  ~E"""
+    <video width="320" height="240" autoplay controls>
+      <source src="data:video/mp4;base64,<%= Base.encode64(file) %>" />
+    </video>
+  """
+end
+```
+
+/upload/show.html.eex:
+
+```
+ <p>
+    <%= if @upload.file_type in Upload.valid_image_types do %>     
+      <%= display_image(@upload) %>
+    <% else %>
+      <%= display_video(@upload) %>
+    <% end %>
+  </p>
+```
+
+
+
