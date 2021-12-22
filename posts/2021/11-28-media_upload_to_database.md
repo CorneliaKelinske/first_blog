@@ -16,10 +16,10 @@ coding
 # 1. Project background
 
 
-I am currently working on a personal project that evolves around a Phoenix video/image-sharing app.
+I am currently working on a personal project that revolves around a Phoenix video/image-sharing app.
 Nothing crazy, nothing new. There are a lot of similar projects out there and I had, at least for the most part, no
 problems finding reference material and resources to answer my questions along the way.
-There were, however, two major sticking points, namely media file upload and media file display.
+There were, however, two major sticking points: media file upload and media file display.
 
 
 # 2. The sticking points
@@ -247,6 +247,13 @@ end
     <% end %>
   </p>
 ```
+
+
+# 8. But will it scale?!
+
+
+No. This is a solution for small, personal projects. It is not meant to scale. It's a neat approach when you are just starting to work on something and don't want to enter into any commitment with third-party providers (yet) or when you know that your project will indeed remain a small one. 
+
 
 
 
