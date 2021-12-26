@@ -167,7 +167,7 @@ end
 
 ```
 
-Let's look at the upload. Our initial upload in the 'create/2' function is what the user inputs into the 'new upload' form under '/uploads/new'and what is subsequently sent through the form to the upload controller. It looks like this:
+Let's look at the upload. Our initial upload in the 'create/2' function is what the user inputs into the 'new upload' form under '/uploads/new' and what is subsequently sent through the form to the upload controller. It looks like this:
 
 ```
 %{
