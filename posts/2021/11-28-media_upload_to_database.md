@@ -63,7 +63,7 @@ And then I have the usual suspects: controllers, views, templates in the '/lib/m
 The first step was to define my 'uploads' schema in my 'upload.ex' file. What's notable in this regard is that I am storing the  image/video file as binary data.
 
 I also added module attributes specifying valid image types and valid video types as well as a combination of both. In order to be able to use the valid image and video types in my templates, I created corresponding functions returning the valid file types.
-I am using my 'changeset/2' function to verify that the file type of the file the user wants to upload is included in the valid file types.
+I am using my `changeset/2` function to verify that the file type of the file the user wants to upload is included in the valid file types.
 
 ```
 defmodule MyProject.Content.Upload do
