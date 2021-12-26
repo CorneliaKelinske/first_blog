@@ -38,7 +38,7 @@ Since I believe that storing multimedia files directly in the database is a good
 
 
 Before we get down to the nitty-gritty, let's make sure we are on the same page. I am assuming that you have set up your Phoenix project including your repo and your uploads and user schemas.  
-For reference, my project has an accounts context in which I am defining my user schema and my upload schema is defined in my content context. Accordingly, my '/lib/my_project folder' has the following structure:
+For reference, my project has an accounts context for my user schema and a content context for my upload schema. Accordingly, my '/lib/my_project folder' has the following structure:
 
 ```
 ├── lib
