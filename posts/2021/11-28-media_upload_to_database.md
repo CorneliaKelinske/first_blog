@@ -16,10 +16,10 @@ coding
 # 1. Project background
 
 
-I am currently working on a personal project that evolves around a Phoenix video/image-sharing app.
+I am currently working on a personal project that revolves around a Phoenix video/image-sharing app.
 Nothing crazy, nothing new. There are a lot of similar projects out there and I had, at least for the most part, no
 problems finding reference material and resources to answer my questions along the way.
-There were, however, two major sticking points, namely media file upload and media file display.
+There were, however, two major sticking points: media file upload and media file display.
 
 
 # 2. The sticking points
@@ -38,7 +38,7 @@ Since I believe that storing multimedia files directly in the database is a good
 
 
 Before we get down to the nitty-gritty, let's make sure we are on the same page. I am assuming that you have set up your Phoenix project including your repo and your uploads and user schemas.  
-For reference, my project has an accounts context in which I am defining my user schema and my upload schema is defined in my content context. Accordingly, my /lib/my_project folder has the following structure:
+For reference, my project has an accounts context for my user schema and a content context for my upload schema. Accordingly, my "/lib/my_project folder" has the following structure:
 
 ```
 ├── lib
@@ -55,15 +55,15 @@ For reference, my project has an accounts context in which I am defining my user
 │   ├── my_project.ex
 
 ```
-And then I have the usual suspects, controllers, views, templates in the /lib/my_project_web folder.
+And then I have the usual suspects: controllers, views, templates in the "/lib/my_project_web" folder.
 
 
 # 4. Upload schema
 
-The first step was to define my "uploads" schema in my upload.ex file. What's notable in this regard is that I am storing the  image/video file as a binary data.
+The first step was to define my uploads schema in my "upload.ex" file. What's notable in this regard is that I am storing the  image/video file as binary data.
 
 I also added module attributes specifying valid image types and valid video types as well as a combination of both. In order to be able to use the valid image and video types in my templates, I created corresponding functions returning the valid file types.
-I am using my changeset function to verify that the file type of the file the user wants to upload is included in the valid file types.
+I am using my `changeset/2` function to verify that the file type of the file the user wants to upload is included in the valid file types.
 
 ```
 defmodule MyProject.Content.Upload do
@@ -100,7 +100,7 @@ defmodule MyProject.Content.Upload do
   end
 end
 ```
-And just to be extra thorough: my content.ex file includes a create_upload function, which I will not elaborate on, since it is one of the functions that the Phoenix generator generates by default.
+And just to be extra thorough: my "content.ex" file includes a `create_upload/1` function, which I will not elaborate on, since it is one of the functions that the Phoenix generator generates by default.
 
 
 # 5. Upload controller
@@ -119,8 +119,7 @@ defmodule MyProjectWeb.UploadController do
   def create(conn, %{"upload" => upload}) do
     user = conn.assigns.current_user
 
-    with :ok <- Bodyguard.permit(Upload, :create, user, upload),
-         {:ok, params, _path} <- parse_upload_params(upload),
+    with {:ok, params, _path} <- parse_upload_params(upload),
          {:ok, upload} <- Content.create_upload(user, params) do
       conn
       |> put_flash(:info, "File uploaded successfully.")
@@ -140,11 +139,7 @@ defmodule MyProjectWeb.UploadController do
         conn
         |> put_flash(:error, "Cannot read file!")
         |> redirect(to: Routes.upload_path(conn, :new))
-
-      {:error, :unauthorized} ->
-        conn
-        |> put_flash(:error, "You are not allowed to do this!")
-        |> redirect(to: Routes.page_path(conn, :home))
+      
     end
   end
 
@@ -172,9 +167,7 @@ end
 
 ```
 
-A note on the side: I am using the Bodyguard library for authorization, that's where the "Bodyguard.permit" in my create function comes from. If you are not using Bodyguard for your project, just ignore this line and the corresponding "{:error, :unauthorized}" else statement.
-
-Let's look at the upload. Our initial upload in the create function is what the user inputs into the "new upload form" under /uploads/new and what is subsequently sent through the form to the upload controller. It looks like this:
+Let's look at the upload. Our initial upload in the `create/2` function is what the user inputs into the "new upload" form under "/uploads/new" and what is subsequently sent through the form to the upload controller. It looks like this:
 
 ```
 %{
@@ -189,17 +182,17 @@ path: "/tmp/plug-1639/multipart-1639441487-618453998432105-6"
 
 What is most important in this map is our "upload" key-value pair. As we can see above, thanks to Plug, the data from the user's file input is represented in a Plug.Upload struct. In short, Plug.Upload stores the uploaded files in a temporary directory while the process requesting the files is alive. Afterwards, the files are deleted from said directory (see the [hexdocs](https://hexdocs.pm/plug/Plug.Upload.html) for more information on Plug.Upload).
 
-In order not to blow my create function entirely out of proportion and to separate my concerns, I have moved the logic for processing my upload into the private "parse_upload_params" function. There, I pattern match on the Plug.Upload struct to obtain the path to where the uploaded file is stored in the temporary directory. I can then use said path as the argument in the File.read function which - in a successful scenario - will return a tuple with :ok and the binary object that contains the contents of whatever the path leads to, i.e. in our case the image/video data in binary format.
+In order not to blow my `create/2` function entirely out of proportion and to separate my concerns, I have moved the logic for processing my upload into the private `parse_upload_params/1` function. There, I pattern match on the Plug.Upload struct to obtain the path to where the uploaded file is stored in the temporary directory. I can then use said path as the argument in the `File.read/1` function which - in a successful scenario - will return a tuple with :ok and the binary that contains the contents of whatever the path leads to, i.e. in our case the image/video data in binary format.
 
-This means that at this point we have all the parameters required for our uploads schema and, in the success case, the parse_upload_params function will return an :ok-tuple with those parameters and the - now no longer important - path. 
-These params, along with the user (that we obtain through conn.assigns.current_user at the beginning of the create function), are then passed into the Content.create_upload function by the create function in our upload controller and stored in the database.
+This means that at this point we have all the parameters required for our uploads schema and, in the success case, `parse_upload_params/1` will return an :ok-tuple with those parameters and the - now no longer important - path. 
+These params, along with the user (that we obtain through `conn.assigns.current_user` at the beginning of the `create/2` function), are then passed into `Content.create_upload/1` by the `create/2` function in our upload controller and stored in the database.
 
 At this point, we have achieved the first step, namely, storing multimedia data in binary format in our database.
 
  
 # 6. Upload template (Phoenix 1.5)
 
-When I first started on my project, I was still using Phoenix 1.5 and the second step, i.e. displaying the multimedia data stored in the database in my template, was technically straightforward. In order to display the multimedia data in my .eex templates, I had to convert the binary data to base64-encoded data. Luckily, Elixir includes the Base module which provides a number of data encoding and decoding functions including encode64/2. The hardest part of this step was doing the research and finding the right code combination that I had to use in my templates in order to get the image/video source set up correctly. I tried a few things, and finally found that the following works (I used this code in my upload/show.html.eex file):
+When I first started on my project, I was still using Phoenix 1.5 and the second step, i.e. displaying the multimedia data stored in the database in my template, was technically straightforward. In order to display the multimedia data in my .eex templates, I had to convert the binary data to base64-encoded data. Luckily, Elixir includes the Base module which provides a number of data encoding and decoding functions including `encode64/2`. The hardest part of this step was doing the research and finding the right code combination that I had to use in my templates in order to get the image/video source set up correctly. I tried a few things, and finally found that the following works (I used this code in my "upload/show.html.eex" file):
 
 Image:
 ``` 
@@ -218,7 +211,7 @@ Video:
 
 All was good until I switched my application over to Phoenix 1.6 and the .heex templates did not allow me to interpolate my Elixir code inside the tags. I found that to be very frustrating. Eventually, I figured out the following workaround:
 
-Phoenix.HTML provides the sigil_E macro for safe EEx syntax inside source files (see the [hexdocs](https://hexdocs.pm/phoenix/0.11.0/Phoenix.HTML.html) documentation). So I ended up creating a display_image and a display_video function in my upload_view.ex file, which respectively made use of the sigil_E macro to basically create the same code I used previously in the Phoenix 1.5 .eex template and which I was then able to call from inside the .heex template:
+Phoenix.HTML provides the sigil_E macro for safe EEx syntax inside source files (see the [hexdocs](https://hexdocs.pm/phoenix/0.11.0/Phoenix.HTML.html) documentation). So I ended up creating a `display_image/1` and a `display_video/1` function in my "upload_view.ex" file, which respectively made use of the sigil_E macro to basically create the same code I used previously in the Phoenix 1.5 .eex template and which I was then able to call from inside the .heex template:
 
 /upload_view.ex:
 
@@ -247,6 +240,13 @@ end
     <% end %>
   </p>
 ```
+
+
+# 8. But will it scale?!
+
+
+Probably not. I am considering this to be a solution for small, personal projects, which is not meant to scale. It's a neat approach when you are just starting to work on something and don't want to enter into any commitment with third-party providers (yet) or when you know that your project will indeed remain a small one.
+
 
 
 
