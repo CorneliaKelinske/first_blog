@@ -100,7 +100,7 @@ defmodule MyProject.Content.Upload do
   end
 end
 ```
-And just to be extra thorough: my 'content.ex' file includes a 'create_upload/1' function, which I will not elaborate on, since it is one of the functions that the Phoenix generator generates by default.
+And just to be extra thorough: my `content.ex` file includes a `create_upload/1` function, which I will not elaborate on, since it is one of the functions that the Phoenix generator generates by default.
 
 
 # 5. Upload controller
