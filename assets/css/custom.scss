@@ -4,8 +4,13 @@
 
 .blog-link {
   color: whitesmoke;
-  text-decoration: none !important;
+  text-decoration: none !important;  
   
+}
+
+.list-link {
+  color:hsl(215, 14%, 34%);
+  text-decoration: none !important;
   
 }
 
@@ -116,3 +121,6 @@ span a {
   padding: 1.5rem;
 }
 
+.ul {
+  padding-bottom: 20px;
+}
