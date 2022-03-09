@@ -1,0 +1,27 @@
+==title==
+How to use a fly volume for storing media uploads for your Elixir app (hosted on fly.io) 
+
+==author==
+Cornelia Kelinske
+
+==description==
+I recently deployed my latest Phoenix project with the help of [fly.io](https://fly.io/) and decided to use a fly volume for
+storing the multimedia files uploaded via the app. Read on to find out what I learned.
+
+
+==tags==
+coding
+
+==body==
+
+# 1. The problem
+
+
+In the last [post](https://connie.codes/post/media_upload_to_database), I described how I stored image and video uploads for 
+a small-scale phoenix app as binary directly in the database. I have since deployed said app on [fly.io](https://fly.io/) and quickly realized that while my storage solution worked well for images, video files were a different story. I was able to upload and display videos without issues when I was using the app in production on my computer, but on mobile devices, videos would either not load properly at all or the wheel of death would appear and spin forever. I had also added some more complexity to my code by compressing uploads prior to their storage and that, in combination with the storage as binary, was more than the remote server could handle. 
+
+
+# 2. The solution
+
+
+After the initial impulse to delete the app and throw my computer out of the window ([The Dark Side of becoming a web developer](https://connie.codes/post/the_dark_side)), my first thought was to use Amazon S3 storage. 
