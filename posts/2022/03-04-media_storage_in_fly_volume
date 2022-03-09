@@ -24,4 +24,26 @@ a small-scale phoenix app as binary directly in the database. I have since deplo
 # 2. The solution
 
 
-After the initial impulse to delete the app and throw my computer out of the window ([The Dark Side of becoming a web developer](https://connie.codes/post/the_dark_side)), my first thought was to use Amazon S3 storage. 
+After the initial impulse to delete the app and throw my computer out of the window ([The Dark Side of becoming a web developer](https://connie.codes/post/the_dark_side)), my first thought was to use Amazon S3 storage. But in a lucky turn of events I discovered that fly.io actually offers a persistent storage option in the form of data volumes that can be easily connected to your app (https://fly.io/blog/persistent-storage-and-fast-remote-builds/). The initial set-up takes less than 5 minutes. You just have to follow the instructions [here](https://fly.io/docs/reference/volumes/). Everything worked. I logged into the remote console and created a file in my volume, which was still available after I had redeployed my app.
+
+
+# 3. Where things got tricky 
+
+
+It all seemed very straightforward until I tried to display the videos and images stored in the volume in my templates. Nothing showed. "Ah, of course", I thought, "the files are in the wrong folder. It has to do with Plug.Static. They need to be in the priv/static directory." I then set the storage path for my uploads accordingly. To this end, I used an environment variable that I set in the three config files (dev.exs, prod.exs, test.exs) like so:
+
+```
+config :my_app, data_path: "priv/static/uploads/development"
+```
+
+And I changed the section in the fly.toml file that mounts the volume in the app from the default destination to this:
+
+```
+[[mounts]]
+  source="my_app_data"
+  destination="/priv/static/data"
+```
+
+
+
+
