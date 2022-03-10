@@ -60,12 +60,28 @@ It worked. Locally. But not in production. A rather intense time (I'm not going 
 2. If something was wrong with my static path (I figured that the problem had something to do with Plug.Static), why were other   images such as my background image and icons that were saved in my priv/static/images folder displayed in production without any problems?
 
 
-# 4. The light at the end of the tunnel
+# 4. The solution -- again
 
 
 I did a lot of online research. I tried to configure my Plug.Static differently. I tried to add a second Plug.Static. All efforts were in vain. Eventually I came across this thread: https://community.fly.io/t/how-do-i-configure-a-phoenix-app-to-store-and-serve-uploaded-images-via-a-fly-io-volume/3379
 
-After reading this, I decided to look at the filesystem of my deployed app again. So I used the "fly ssh console" command in my terminal to log into the app. I "cded" from my top-level directory all the way into the priv/static/directory. There I noticed something interesting: the image folder did not contain the images that I had in this folder in development (such as the background image) and that were displayed in my templates in production without problems. This discovery is when things finally clicked into place. I went all the way up into the top-level directory. And then I went down the path described in the aforementioned thread: app/lib/my_app-version.number/priv/static/. Lo and behold, the image folder in this directory contained all the images that were in my static/images folder in development! 
+After reading this, I decided to look at the filesystem of my deployed app again. I used the "fly ssh console" command in my terminal to log into the app. I "cded" from my top-level directory all the way into the priv/static/directory. There I noticed something interesting: the image folder did not contain the images that were stored in said folder locally on my computer (such as the background image). This discovery is when things finally clicked into place. I went all the way up into the top-level directory. From there, I went down the path described in the aforementioned thread: app/lib/my_app-version.number/priv/static/. Lo and behold, the image folder in this directory contained all the images that were in my static/images folder in development! 
+
+Bingo! I changed the configuration in my prod.exs file to
+
+```
+config :my_app, data_path: "app/lib/my_app-version.number/priv/static/data"
+```
+
+and the mount in my fly.toml to
+
+```
+[[mounts]]
+  source="my_app_data"
+  destination="/app/lib/my_app-version.number/priv/static/data"
+```
+
+and voilà: my images and videos were finally displayed in production.
 
 
 
