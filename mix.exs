@@ -1,9 +1,9 @@
-defmodule FirstBlog.MixProject do
+defmodule TheBrogrammer.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :first_blog,
+      app: :the_brogrammer,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -26,7 +26,7 @@ defmodule FirstBlog.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {FirstBlog.Application, []},
+      mod: {TheBrogrammer.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

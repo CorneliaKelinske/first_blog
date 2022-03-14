@@ -16,7 +16,7 @@ api_key =
     environment variable API_KEY is missing.
     """
 
-config :first_blog, FirstBlogWeb.Endpoint,
+config :the_brogrammer, TheBrogrammerWeb.Endpoint,
   url: [host: System.get_env("WEB_HOST"), port: 5000],
   cache_static_manifest: "priv/static/cache_manifest.json",
   load_from_system_env: true
@@ -28,7 +28,7 @@ config :swoosh, :api_client, Swoosh.ApiClient.Hackney
 
 config :swoosh, local: false
 
-config :first_blog, FirstBlog.Mailer,
+config :the_brogrammer, TheBrogrammer.Mailer,
   adapter: Swoosh.Adapters.Mailgun,
   api_key: api_key,
   domain: "mail.connie.codes"
@@ -38,7 +38,7 @@ config :first_blog, FirstBlog.Mailer,
 # To get SSL working, you will need to add the `https` key
 # to the previous section and set your `:url` port to 443:
 #
-#     config :first_blog, FirstBlogWeb.Endpoint,
+#     config :the_brogrammer, TheBrogrammerWeb.Endpoint,
 #       ...
 #       url: [host: "example.com", port: 443],
 #       https: [
@@ -62,7 +62,7 @@ config :first_blog, FirstBlog.Mailer,
 # We also recommend setting `force_ssl` in your endpoint, ensuring
 # no data is ever sent via http, always redirecting to https:
 #
-#     config :first_blog, FirstBlogWeb.Endpoint,
+#     config :the_brogrammer, TheBrogrammerWeb.Endpoint,
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.

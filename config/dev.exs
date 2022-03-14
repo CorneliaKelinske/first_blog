@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :first_blog, FirstBlogWeb.Endpoint,
+config :the_brogrammer, TheBrogrammerWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -46,13 +46,13 @@ config :first_blog, FirstBlogWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :first_blog, FirstBlogWeb.Endpoint,
+config :the_brogrammer, TheBrogrammerWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/first_blog_web/(live|views)/.*(ex)$",
-      ~r"lib/first_blog_web/templates/.*(eex)$",
+      ~r"lib/the_brogrammer_web/(live|views)/.*(ex)$",
+      ~r"lib/the_brogrammer_web/templates/.*(eex)$",
       ~r"posts/*/.*(md)$"
     ]
   ]
@@ -68,4 +68,4 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 # Configures Swoosh used for contact form
-config :first_blog, FirstBlog.Mailer, adapter: Swoosh.Adapters.Local
+config :the_brogrammer, TheBrogrammer.Mailer, adapter: Swoosh.Adapters.Local
