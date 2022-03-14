@@ -10,12 +10,6 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 
-api_key =
-  System.get_env("API_KEY") ||
-    raise """
-    environment variable API_KEY is missing.
-    """
-
 config :the_brogrammer, TheBrogrammerWeb.Endpoint,
   url: [host: System.get_env("WEB_HOST"), port: 5000],
   cache_static_manifest: "priv/static/cache_manifest.json",
@@ -24,14 +18,6 @@ config :the_brogrammer, TheBrogrammerWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :debug
 
-config :swoosh, :api_client, Swoosh.ApiClient.Hackney
-
-config :swoosh, local: false
-
-config :the_brogrammer, TheBrogrammer.Mailer,
-  adapter: Swoosh.Adapters.Mailgun,
-  api_key: api_key,
-  domain: "mail.connie.codes"
 
 # ## SSL Support
 #
@@ -69,4 +55,3 @@ config :the_brogrammer, TheBrogrammer.Mailer,
 
 # Finally import the config/prod.secret.exs which loads secrets
 # and configuration from environment variables.
-import_config "prod.secret.exs"
