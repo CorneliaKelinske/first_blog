@@ -20,6 +20,10 @@ FROM ${BUILDER_IMAGE} as builder
 # install build dependencies
 RUN apt-get update -y && apt-get install -y build-essential git rustc\
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
+RUN curl https://deb.nodesource.com/setup_12.x | bash
+RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+
 
 # prepare build dir
 WORKDIR /app
@@ -33,6 +37,9 @@ ENV MIX_ENV="prod"
 ENV RUSTUP_HOME=/usr/local/rustup
 ENV CARGO_HOME=/usr/local/cargo
 ENV PATH=/usr/local/cargo/bin:$PATH
+
+
+EXPOSE 8080/tcp
 
 # install mix dependencies
 COPY mix.exs mix.lock ./
@@ -52,13 +59,16 @@ COPY priv priv
 # your Elixir templates, you will need to move the asset compilation
 # step down so that `lib` is available.
 COPY assets assets
-
+COPY posts posts
 # For Phoenix 1.6 and later, compile assets using esbuild
-RUN mix assets.deploy
+#RUN mix assets.deploy
 
 # For Phoenix versions earlier than 1.6, compile assets npm
-# RUN cd assets && yarn install && yarn run webpack --mode production
-# RUN mix phx.digest
+RUN cd assets && yarn install && yarn run webpack --mode production
+RUN mix phx.digest
+
+
+
 
 # Compile the release
 COPY lib lib
@@ -97,7 +107,10 @@ USER nobody
 # Create a symlink to the command that starts your application. This is required
 # since the release directory and start up script are named after the
 # application, and we don't know that name.
-RUN set -eux; \
-  ln -nfs /app/$(basename *)/bin/$(basename *) /app/entry
 
-CMD /app/entry start
+
+CMD ["/app/bin/server"]
+
+# Appended by flyctl
+ENV ECTO_IPV6 true
+ENV ERL_AFLAGS "-proto_dist inet6_tcp"

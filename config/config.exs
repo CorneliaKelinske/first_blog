@@ -13,8 +13,8 @@ config :the_brogrammer, TheBrogrammerWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: TheBrogrammerWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: TheBrogrammer.PubSub,
-  live_view: [signing_salt: "n2D8haxk"],
-  secret_key_base: "BXCOcT71Lt8Tgu1KBd0YFFdoBiGd5tj/MA0VizTrCqsSFGRTY1F8oHfIr6UeAGUs"
+  live_view: [signing_salt: "n2D8haxk"]
+  #secret_key_base: "BXCOcT71Lt8Tgu1KBd0YFFdoBiGd5tj/MA0VizTrCqsSFGRTY1F8oHfIr6UeAGUs"
 
 # Configures Elixir's Logger
 config :logger, :console,
